@@ -1,0 +1,4039 @@
+[
+ {
+  "id": "00400A",
+  "name": "主動國泰動能高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00401A",
+  "name": "主動摩根台灣鑫收",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00402A",
+  "name": "主動安聯美國科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00403A",
+  "name": "主動統一升級50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00404A",
+  "name": "主動聯博動能50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00405A",
+  "name": "主動富邦台灣龍耀",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00406A",
+  "name": "主動中信台灣收益",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00407A",
+  "name": "主動凱基台灣",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00408A",
+  "name": "主動第一金優股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00409A",
+  "name": "主動復華全球50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00410A",
+  "name": "主動永豐科技趨勢",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00411A",
+  "name": "主動統一前沿科技",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00412A",
+  "name": "主動安聯亞半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00415A",
+  "name": "主動群益核心50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00416A",
+  "name": "主動台新臺灣中小",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "0050",
+  "name": "元大台灣50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0051",
+  "name": "元大中型100",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0052",
+  "name": "富邦科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0053",
+  "name": "元大科技市值",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0054",
+  "name": "元大台商50",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0055",
+  "name": "元大MSCI金融",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "金融",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0056",
+  "name": "元大高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0057",
+  "name": "富邦摩台",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0058",
+  "name": "富邦發達",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0059",
+  "name": "富邦金融",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "金融",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0060",
+  "name": "新台灣",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "0061",
+  "name": "元大寶滬深",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "006201",
+  "name": "元大富櫃50",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "006203",
+  "name": "元大MSCI台灣",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "006204",
+  "name": "永豐臺灣加權",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "006205",
+  "name": "富邦上証",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "006206",
+  "name": "元大上證50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "006207",
+  "name": "復華滬深",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "006208",
+  "name": "富邦台50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00625K",
+  "name": "富邦上証+R",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00631L",
+  "name": "元大台灣50正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00632R",
+  "name": "元大台灣50反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00633L",
+  "name": "富邦上証正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00634R",
+  "name": "富邦上証反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00635U",
+  "name": "期元大S&P黃金",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00636",
+  "name": "國泰中國A50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00636K",
+  "name": "國泰中國A50+U",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00637L",
+  "name": "元大滬深300正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00638R",
+  "name": "元大滬深300反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00639",
+  "name": "富邦深100",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00640L",
+  "name": "富邦日本正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00641R",
+  "name": "富邦日本反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00642U",
+  "name": "期元大S&P石油",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00643",
+  "name": "群益深証中小",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00643K",
+  "name": "群益深証中小+R",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00645",
+  "name": "富邦日本",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00646",
+  "name": "元大S&P500",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00647L",
+  "name": "元大S&P500正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00648R",
+  "name": "元大S&P500反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00649",
+  "name": "FH香港",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00650L",
+  "name": "復華香港正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00651R",
+  "name": "復華香港反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00652",
+  "name": "富邦印度",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00653L",
+  "name": "富邦印度正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00654R",
+  "name": "富邦印度反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00655L",
+  "name": "國泰中國A50正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00656R",
+  "name": "國泰中國A50反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00657",
+  "name": "國泰日經225",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00657K",
+  "name": "國泰日經225+U",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00658L",
+  "name": "國泰日本正2",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00659R",
+  "name": "國泰日本反1",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00660",
+  "name": "元大歐洲50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00661",
+  "name": "元大日經225",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00662",
+  "name": "富邦NASDAQ",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00663L",
+  "name": "國泰臺灣加權正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00664R",
+  "name": "國泰臺灣加權反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00665L",
+  "name": "富邦恒生國企正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00666R",
+  "name": "富邦恒生國企反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00667",
+  "name": "元大韓國",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00668",
+  "name": "國泰美國道瓊",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00668K",
+  "name": "國泰美國道瓊+U",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00669R",
+  "name": "國泰美國道瓊反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00670L",
+  "name": "富邦NASDAQ正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00671R",
+  "name": "富邦NASDAQ反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00672L",
+  "name": "元大S&P原油正2",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00673R",
+  "name": "期元大S&P原油反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00674R",
+  "name": "期元大S&P黃金反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00675L",
+  "name": "富邦臺灣加權正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00676R",
+  "name": "富邦臺灣加權反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00677U",
+  "name": "期富邦VIX",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "原物料期貨",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00678",
+  "name": "群益那斯達克生技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00679B",
+  "name": "元大美債20年",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00680L",
+  "name": "元大美債20正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00681R",
+  "name": "元大美債20反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00682U",
+  "name": "期元大美元指數",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00683L",
+  "name": "期元大美元指正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00684R",
+  "name": "期元大美元指反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00685L",
+  "name": "群益臺灣加權正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00686R",
+  "name": "群益臺灣加權反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00687B",
+  "name": "國泰20年美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00687C",
+  "name": "國泰20年美債+櫃U",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00688L",
+  "name": "國泰20年美債正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00689R",
+  "name": "國泰20年美債反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00690",
+  "name": "兆豐藍籌30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00691R",
+  "name": "兆豐藍籌30反1",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00692",
+  "name": "富邦公司治理",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00693U",
+  "name": "期街口S&P黃豆",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00694B",
+  "name": "富邦美債1-3",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00695B",
+  "name": "富邦美債7-10",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00696B",
+  "name": "富邦美債20年",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00697B",
+  "name": "元大美債7-10",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00698L",
+  "name": "元大美債7-10正2",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00699R",
+  "name": "元大美債7-10反1",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00700",
+  "name": "富邦恒生國企",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00701",
+  "name": "國泰股利精選30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00702",
+  "name": "國泰標普低波高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00703",
+  "name": "台新MSCI中國",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00704L",
+  "name": "台新MSCI台灣正2",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00705R",
+  "name": "台新MSCI台灣反1",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00706L",
+  "name": "期元大S&P日圓正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00707R",
+  "name": "期元大S&P日圓反1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00708L",
+  "name": "期元大S&P黃金正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00709",
+  "name": "富邦歐洲",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00710B",
+  "name": "復華彭博非投等債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00711B",
+  "name": "復華彭博新興債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00712",
+  "name": "復華富時不動產",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00713",
+  "name": "元大台灣高息低波",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00714",
+  "name": "群益道瓊美國地產",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00715L",
+  "name": "期街口布蘭特正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00716R",
+  "name": "華頓S&P布蘭特反1",
+  "market": "上市",
+  "listed": "2026-06-27",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00717",
+  "name": "富邦美國特別股",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00718B",
+  "name": "富邦中國政策債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00719B",
+  "name": "元大美債1-3",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00720B",
+  "name": "元大投資級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00721B",
+  "name": "元大中國債3-5",
+  "market": "上櫃",
+  "listed": "2024-10-16",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00722B",
+  "name": "群益投資級電信債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00723B",
+  "name": "群益投資級科技債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00724B",
+  "name": "群益投資級金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00725B",
+  "name": "國泰投資級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00726B",
+  "name": "國泰新興投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00727B",
+  "name": "國泰優選非投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00728",
+  "name": "第一金工業30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00729R",
+  "name": "第一金工業30反1",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00730",
+  "name": "富邦臺灣優質高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00731",
+  "name": "復華富時高息低波",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00732",
+  "name": "國泰RMB短期報酬",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00733",
+  "name": "富邦臺灣中小",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00734B",
+  "name": "台新JPM新興債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00735",
+  "name": "國泰臺韓科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00736",
+  "name": "國泰新興市場",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00737",
+  "name": "國泰AI機器人",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00738U",
+  "name": "期元大道瓊白銀",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00739",
+  "name": "元大MSCI A股",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00740B",
+  "name": "富邦全球投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00741B",
+  "name": "富邦全球非投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00742",
+  "name": "新光內需收益",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00743",
+  "name": "國泰中國A150",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00744B",
+  "name": "國泰中國政金債5+",
+  "market": "上櫃",
+  "listed": "2023-11-22",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00745B",
+  "name": "富邦中政債0-1",
+  "market": "上櫃",
+  "listed": "2022-12-11",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00746B",
+  "name": "富邦A級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00747B",
+  "name": "FH中國政策債",
+  "market": "上櫃",
+  "listed": "2022-12-28",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00748B",
+  "name": "凱基中國債3-10",
+  "market": "上櫃",
+  "listed": "2023-02-22",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00749B",
+  "name": "凱基新興債10+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00750B",
+  "name": "凱基科技債10+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00751B",
+  "name": "元大AAA至A公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00752",
+  "name": "中信中國50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00753L",
+  "name": "中信中國50正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00754B",
+  "name": "群益AAA-AA公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00755B",
+  "name": "群益投資級公用債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00756B",
+  "name": "群益投等新興公債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00757",
+  "name": "統一FANG+",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00758B",
+  "name": "復華能源債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00759B",
+  "name": "復華製藥債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00760B",
+  "name": "復華新興企業債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00761B",
+  "name": "國泰A級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00762",
+  "name": "元大全球AI",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00763U",
+  "name": "期街口道瓊銅",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00764B",
+  "name": "群益25年美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00765B",
+  "name": "群益中國政金債",
+  "market": "上櫃",
+  "listed": "2023-06-01",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00766L",
+  "name": "台新MSCI中國正2",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "槓桿反向",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00767",
+  "name": "FH美國金融股",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "金融",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00768B",
+  "name": "復華20年美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00770",
+  "name": "國泰北美科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00771",
+  "name": "元大US高息特別股",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00772B",
+  "name": "中信高評級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00773B",
+  "name": "中信優先金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00774B",
+  "name": "新光中國政金綠債",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00774C",
+  "name": "新光中政金綠債+R",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00775B",
+  "name": "台新投等債15+",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00776",
+  "name": "新光ICE美國權值",
+  "market": "上市",
+  "listed": "2026-06-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00777B",
+  "name": "凱基AAA至A公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00778B",
+  "name": "凱基金融債20+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00779B",
+  "name": "凱基美債25+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00780B",
+  "name": "國泰A級金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00781B",
+  "name": "國泰A級科技債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00782B",
+  "name": "國泰A級公用債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00783",
+  "name": "富邦中証500",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00784B",
+  "name": "富邦中國投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00785B",
+  "name": "富邦金融投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00786B",
+  "name": "元大10年IG銀行債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00787B",
+  "name": "元大10年IG醫療債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00788B",
+  "name": "元大10年IG電能債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00789B",
+  "name": "復華公司債A3",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00790B",
+  "name": "復華次順位金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00791B",
+  "name": "復華信用債1-5",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00792B",
+  "name": "群益A級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00793B",
+  "name": "群益AAA-A醫療債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00794B",
+  "name": "群益7+中國政金債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00795B",
+  "name": "中信美國公債20年",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00796B",
+  "name": "中信中國債7-10",
+  "market": "上櫃",
+  "listed": "2022-08-27",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00798B",
+  "name": "國泰中企A級債7+",
+  "market": "上櫃",
+  "listed": "2020-07-16",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00799B",
+  "name": "國泰A級醫療債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "0080",
+  "name": "恒中國",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "0081",
+  "name": "恒香港",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "008201",
+  "name": "BP上證50",
+  "market": "上市",
+  "listed": "2026-07-09",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00830",
+  "name": "國泰費城半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00831B",
+  "name": "新光美債1-3",
+  "market": "上櫃",
+  "listed": "2024-07-20",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00832B",
+  "name": "新光美債20+",
+  "market": "上櫃",
+  "listed": "2021-09-11",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00833B",
+  "name": "第一金美債20+",
+  "market": "上櫃",
+  "listed": "2020-12-03",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00834B",
+  "name": "第一金金融債10+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00835B",
+  "name": "第一金科技債10+",
+  "market": "上櫃",
+  "listed": "2020-06-24",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00836B",
+  "name": "永豐10年A公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00837B",
+  "name": "永豐15年金融債",
+  "market": "上櫃",
+  "listed": "2020-07-02",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00838B",
+  "name": "永豐7-10年中國債",
+  "market": "上櫃",
+  "listed": "2022-06-02",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00839B",
+  "name": "凱基醫療保健債",
+  "market": "上櫃",
+  "listed": "2021-08-05",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00840B",
+  "name": "凱基IG精選15+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00841B",
+  "name": "凱基AAA-AA公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00842B",
+  "name": "台新美元銀行債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00843B",
+  "name": "台新中國政策債",
+  "market": "上櫃",
+  "listed": "2022-07-22",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00844B",
+  "name": "新光15年IG金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00845B",
+  "name": "富邦新興投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00846B",
+  "name": "富邦歐洲銀行債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00847B",
+  "name": "中信美國市政債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00848B",
+  "name": "中信新興亞洲債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00849B",
+  "name": "中信EM主權債0-5",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00850",
+  "name": "元大臺灣ESG永續",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00851",
+  "name": "台新全球AI",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00852L",
+  "name": "國泰美國道瓊正2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "槓桿反向",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00853B",
+  "name": "統一美債10年Aa-A",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00854B",
+  "name": "富邦全球保險債",
+  "market": "上櫃",
+  "listed": "2020-12-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00855B",
+  "name": "富邦全球能源債",
+  "market": "上櫃",
+  "listed": "2020-12-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00856B",
+  "name": "永豐1-3年美公債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00857B",
+  "name": "永豐20年美公債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00858",
+  "name": "永豐美國500大",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00859B",
+  "name": "群益0-1年美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00860B",
+  "name": "群益1-5Y投資級債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00861",
+  "name": "元大全球未來通訊",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00862B",
+  "name": "中信投資級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00863B",
+  "name": "中信全球電信債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00864B",
+  "name": "中信美國公債0-1",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00865B",
+  "name": "國泰US短期公債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00866",
+  "name": "新光Shiller CAPE",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00867B",
+  "name": "新光A-BBB電信債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00868B",
+  "name": "FT1-3年美公債",
+  "market": "上櫃",
+  "listed": "2021-05-14",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00869B",
+  "name": "FT10-25年公司債",
+  "market": "上櫃",
+  "listed": "2021-08-19",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00870B",
+  "name": "元大15年EM主權債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00871B",
+  "name": "元大中國政金債",
+  "market": "上櫃",
+  "listed": "2021-03-03",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00872B",
+  "name": "凱基美債1-3",
+  "market": "上櫃",
+  "listed": "2021-10-08",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00873B",
+  "name": "凱基新興債1-5",
+  "market": "上櫃",
+  "listed": "2021-02-23",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00874B",
+  "name": "凱基BBB公司債15+",
+  "market": "上櫃",
+  "listed": "2021-02-23",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00875",
+  "name": "國泰網路資安",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00876",
+  "name": "元大全球5G",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00877",
+  "name": "復華中國5G",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00878",
+  "name": "國泰永續高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00879B",
+  "name": "第一金美債0-1",
+  "market": "上櫃",
+  "listed": "2021-10-08",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00880B",
+  "name": "第一金電信債15+",
+  "market": "上櫃",
+  "listed": "2021-10-08",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00881",
+  "name": "國泰台灣科技龍頭",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00882",
+  "name": "中信中國高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00883B",
+  "name": "中信ESG投資級債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00884B",
+  "name": "中信低碳新興債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00885",
+  "name": "富邦越南",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00886",
+  "name": "永豐美國科技",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00887",
+  "name": "永豐中國科技50大",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00888",
+  "name": "永豐台灣ESG",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00889B",
+  "name": "凱基ESG新興債15+",
+  "market": "上櫃",
+  "listed": "2022-06-24",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00890B",
+  "name": "凱基ESG BBB債15+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00891",
+  "name": "中信關鍵半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00892",
+  "name": "富邦台灣半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00893",
+  "name": "國泰智能電動車",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00894",
+  "name": "中信小資高價30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00895",
+  "name": "富邦未來車",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00896",
+  "name": "中信綠能及電動車",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00897",
+  "name": "富邦基因免疫生技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00898",
+  "name": "國泰基因免疫革命",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00899",
+  "name": "FT潔淨能源",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00900",
+  "name": "富邦特選高股息30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00901",
+  "name": "永豐智能車供應鏈",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00902",
+  "name": "中信電池及儲能",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00903",
+  "name": "富邦元宇宙",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00904",
+  "name": "台新臺灣半導體30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00905",
+  "name": "FT臺灣Smart",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00906",
+  "name": "大華元宇宙科技50",
+  "market": "上市",
+  "listed": "2024-12-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00907",
+  "name": "永豐優息存股",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00908",
+  "name": "富邦入息REITs+",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00909",
+  "name": "國泰數位支付服務",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00910",
+  "name": "第一金太空衛星",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00911",
+  "name": "兆豐洲際半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00912",
+  "name": "中信臺灣智慧50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00913",
+  "name": "兆豐台灣晶圓製造",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00915",
+  "name": "凱基優選高股息30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00916",
+  "name": "國泰全球品牌50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00917",
+  "name": "中信特選金融",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "金融",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00918",
+  "name": "大華優利高填息30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00919",
+  "name": "群益台灣精選高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00920",
+  "name": "富邦ESG綠色電力",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00921",
+  "name": "兆豐龍頭等權重",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00922",
+  "name": "國泰台灣領袖50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00923",
+  "name": "群益台ESG低碳50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00924",
+  "name": "復華S&P500成長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00925",
+  "name": "新光標普電動車",
+  "market": "上市",
+  "listed": "2025-06-05",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00926",
+  "name": "凱基全球菁英55",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00927",
+  "name": "群益半導體收益",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00928",
+  "name": "中信上櫃ESG 30",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00929",
+  "name": "復華台灣科技優息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00930",
+  "name": "永豐ESG低碳高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00931B",
+  "name": "統一美債20年",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00932",
+  "name": "兆豐永續高息等權",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00933B",
+  "name": "國泰10Y+金融債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00934",
+  "name": "中信成長高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00935",
+  "name": "野村臺灣新科技50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00936",
+  "name": "台新永續高息中小",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00937B",
+  "name": "群益ESG投等債20+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00938",
+  "name": "凱基優選30",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00939",
+  "name": "統一台灣高息動能",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00940",
+  "name": "元大台灣價值高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00941",
+  "name": "中信上游半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00942B",
+  "name": "台新美A公司債20+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00943",
+  "name": "兆豐電子高息等權",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00944",
+  "name": "野村趨勢動能高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00945B",
+  "name": "凱基美國非投等債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00946",
+  "name": "群益科技高息成長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00947",
+  "name": "台新臺灣IC設計",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00948B",
+  "name": "中信優息投資級債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00949",
+  "name": "復華日本龍頭",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00950B",
+  "name": "凱基A級公司債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00951",
+  "name": "台新日本半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00952",
+  "name": "凱基台灣AI50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00953B",
+  "name": "群益優選非投等債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00954",
+  "name": "中信日本半導體",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00955",
+  "name": "中信日本商社",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00956",
+  "name": "中信日經高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00957B",
+  "name": "兆豐US優選投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00958B",
+  "name": "永豐ESG銀行債15+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00959B",
+  "name": "大華投等美債15Y+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00960",
+  "name": "野村全球航運龍頭",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00961",
+  "name": "FT臺灣永續高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00962",
+  "name": "台新AI優息動能",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00963",
+  "name": "中信全球高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00964",
+  "name": "中信亞太高股息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00965",
+  "name": "元大航太防衛科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00966B",
+  "name": "統一ESG投等債15+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00967B",
+  "name": "元大優息美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00968B",
+  "name": "元大優息投等債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00969B",
+  "name": "元大零息超長美債",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00970B",
+  "name": "新光BBB投等債20+",
+  "market": "上櫃",
+  "listed": "2024-12-30",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00971",
+  "name": "野村美國研發龍頭",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00972",
+  "name": "野村日本動能高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009800",
+  "name": "中信NASDAQ",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009801",
+  "name": "中信美國創新科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009802",
+  "name": "富邦旗艦50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009803",
+  "name": "玉山市值動能50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009804",
+  "name": "聯邦台精彩50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009805",
+  "name": "台新美國電力基建",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009806",
+  "name": "台新標普500",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009807",
+  "name": "台新標普科技精選",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009808",
+  "name": "華南永昌優選50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009809",
+  "name": "富邦淨零ESG50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "ESG永續",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00980A",
+  "name": "主動野村臺灣優選",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00980B",
+  "name": "台新特選IG債10+",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00980D",
+  "name": "主動聯博投等入息",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00980T",
+  "name": "平衡凱基美國TOP",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "平衡型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009810",
+  "name": "玉山全球藍籌100",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009811",
+  "name": "統一美國50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009812",
+  "name": "野村日本東證",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009813",
+  "name": "貝萊德標普卓越50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009814",
+  "name": "富邦標普500",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009815",
+  "name": "大華美國MAG7+",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009816",
+  "name": "凱基台灣TOP50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009817",
+  "name": "國泰日本不動產",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009818",
+  "name": "華南永昌NASDAQxT",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009819",
+  "name": "中信數據及電力",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00981A",
+  "name": "主動統一台股增長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00981B",
+  "name": "第一金優選非投債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00981D",
+  "name": "主動中信非投等債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00981T",
+  "name": "平衡凱基雙核收息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "平衡型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009820",
+  "name": "元大納斯達克精選",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009821",
+  "name": "野村稀土關鍵資源",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009822",
+  "name": "華南永昌未來金融",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "金融",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009823",
+  "name": "群益S&P500",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009824",
+  "name": "群益美國科技巨頭",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009825",
+  "name": "聯邦美國金融創新",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009826",
+  "name": "貝萊德世界股票",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009827",
+  "name": "玉山未來全球算力",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "009828",
+  "name": "中信台日韓PCB",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009829",
+  "name": "大華韓國KOSPI50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00982A",
+  "name": "主動群益台灣強棒",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00982B",
+  "name": "FT投資級債20+",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00982D",
+  "name": "主動富邦動態入息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00982T",
+  "name": "平衡兆豐台美動能",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "平衡型",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009831",
+  "name": "FT核心AI電力算力",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "009832",
+  "name": "兆豐美國黃金",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "原物料期貨",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00983A",
+  "name": "主動中信ARK創新",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00983B",
+  "name": "大華優利美公債20",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00983D",
+  "name": "主動富邦複合收益",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00984A",
+  "name": "主動安聯台灣高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00984B",
+  "name": "大華優利美A債15",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00984D",
+  "name": "主動聯博全球非投",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00985A",
+  "name": "主動野村台灣50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00985B",
+  "name": "群益ESG投等債0-5",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00985D",
+  "name": "主動貝萊德優投等",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00986A",
+  "name": "主動台新龍頭成長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00986B",
+  "name": "FT金融債10+",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00986D",
+  "name": "主動復華金融債息",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00987A",
+  "name": "主動台新優勢成長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00987B",
+  "name": "野村10+澳洲公債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00987D",
+  "name": "主動統一美債量化",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00988A",
+  "name": "主動統一全球創新",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00988B",
+  "name": "玉山嚴選非投債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00989A",
+  "name": "主動摩根美國科技",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00989B",
+  "name": "台新美國非投等債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00990A",
+  "name": "主動元大AI新經濟",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00990B",
+  "name": "國泰收益非投等債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "海外",
+  "tags": []
+ },
+ {
+  "id": "00991A",
+  "name": "主動復華未來50",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00991B",
+  "name": "貝萊德A級公司債",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00992A",
+  "name": "主動群益科技創新",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "科技",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00992B",
+  "name": "街口優息非投債",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "債券",
+  "region": "台股",
+  "tags": []
+ },
+ {
+  "id": "00993A",
+  "name": "主動安聯台灣",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00994A",
+  "name": "主動第一金台股優",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00995A",
+  "name": "主動中信台灣卓越",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00996A",
+  "name": "主動兆豐台灣豐收",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "市值型",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00997A",
+  "name": "主動群益美國增長",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "其他主題",
+  "region": "海外",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00998A",
+  "name": "主動復華金融股息",
+  "market": "上櫃",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "00999A",
+  "name": "主動野村臺灣高息",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "高股息",
+  "region": "台股",
+  "tags": [
+   "主動式"
+  ]
+ },
+ {
+  "id": "01001T",
+  "name": "土銀富邦R1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01002T",
+  "name": "土銀國泰R1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01003T",
+  "name": "兆豐新光R1",
+  "market": "上市",
+  "listed": "2020-11-14",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01004T",
+  "name": "土銀富邦R2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01005T",
+  "name": "三鼎",
+  "market": "上市",
+  "listed": "2020-11-14",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01007T",
+  "name": "兆豐國泰R2",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01008T",
+  "name": "駿馬R1",
+  "market": "上市",
+  "listed": "2020-11-14",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01009T",
+  "name": "王道圓滿R1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ },
+ {
+  "id": "01010T",
+  "name": "京城樂富R1",
+  "market": "上市",
+  "listed": "2026-11-04",
+  "category": "不動產",
+  "region": "台股",
+  "tags": [
+   "REITs"
+  ]
+ }
+]

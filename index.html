@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ETF 月配息規劃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5fa; --panel:#ffffff; --ink:#141a2e; --sub:#5b6478; --line:#e4e8f1;
+  --up:#e5383b; --down:#13a05f;           /* 台股:漲紅跌綠 */
+  --brand:#1f3cff; --brand2:#7b2ff7;
+  --shadow:0 10px 30px -12px rgba(20,26,46,.25);
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-family:Inter,"Noto Sans TC",sans-serif;font-variant-numeric:tabular-nums}
+
+/* ===== 頂部 ===== */
+header{background:linear-gradient(120deg,#0d1b4c 0%,#1f3cff 55%,#7b2ff7 100%);color:#fff;padding:28px 32px 90px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
+.brand h1{font-size:30px;font-weight:900;letter-spacing:.5px}
+.brand p{opacity:.8;margin-top:6px;font-size:14px}
+.tix{display:flex;gap:14px;flex-wrap:wrap}
+.tick{background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:12px 18px;min-width:150px}
+.tick small{opacity:.75;font-size:12px}
+.tick b{display:block;font-size:22px;margin-top:2px}
+.btn-up{background:#fff;color:#1f3cff;border:0;border-radius:14px;padding:14px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);display:flex;gap:8px;align-items:center}
+.btn-up:hover{transform:translateY(-1px)}
+
+/* ===== 分類大圖卡 ===== */
+.wrap{max-width:1500px;margin:-64px auto 0;padding:0 24px 60px;position:relative;z-index:2}
+.cats{margin-top:4px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.cat{border-radius:var(--r);padding:20px;color:#fff;cursor:pointer;position:relative;overflow:hidden;min-height:150px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;border:3px solid transparent}
+.cat:hover{transform:translateY(-4px)}
+.cat.on{border-color:#fff;outline:3px solid var(--ink)}
+.cat .ic{font-size:30px}
+.cat h3{font-size:20px;font-weight:900;margin-top:6px}
+.cat .meta{display:flex;justify-content:space-between;margin-top:14px;font-size:13px;opacity:.95}
+.cat .meta b{font-size:22px;display:block}
+.cat:after{content:"";position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.15)}
+
+/* ===== 主區 ===== */
+.main{display:grid;grid-template-columns:1fr 380px;gap:22px;margin-top:26px}
+@media(max-width:1100px){.main{grid-template-columns:1fr}}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.bar input,.bar select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
+.bar input{flex:1;min-width:200px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;font-weight:500}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.count{color:var(--sub);font-size:13px;margin-left:auto}
+
+/* ===== ETF 大圖卡 ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--panel);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px)}
+.card .hd{padding:16px 18px 14px;color:#fff;position:relative}
+.card .hd .code{font-size:13px;opacity:.85;font-weight:700;letter-spacing:.5px}
+.card .hd .nm{font-size:19px;font-weight:900;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:70px}
+.card .hd .freq{position:absolute;right:14px;top:14px;background:rgba(255,255,255,.95);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:800}
+.card .bd{padding:14px 18px 16px;flex:1;display:flex;flex-direction:column;gap:12px}
+.pr{display:flex;align-items:baseline;gap:10px}
+.pr b{font-size:28px;font-weight:800}
+.pr span{font-weight:700;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{background:var(--bg);border-radius:12px;padding:8px 10px}
+.kpi small{color:var(--sub);font-size:11px;display:block}
+.kpi b{font-size:16px}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.months i{height:20px;border-radius:5px;background:#eef1f7;font-style:normal;font-size:10px;display:grid;place-items:center;color:#a3abbd;font-weight:700}
+.months i.pay{color:#fff}
+.lbl{font-size:11px;color:var(--sub);margin-bottom:4px}
+.warn{background:#fff4e5;color:#b25e00;font-size:12px;border-radius:10px;padding:6px 10px;font-weight:500}
+.add{margin-top:auto;border:0;border-radius:12px;padding:10px;font-weight:800;cursor:pointer;color:#fff;font-size:14px}
+
+/* ===== 右側:我的配息月曆 ===== */
+aside{position:sticky;top:16px;align-self:start;display:flex;flex-direction:column;gap:16px}
+.box{background:var(--panel);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
+.box h2{font-size:18px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.big{background:linear-gradient(135deg,#ff7a18,#ff3d77 55%,#7b2ff7);color:#fff}
+.big .sum{font-size:38px;font-weight:800;margin:8px 0 2px}
+.big .row{display:flex;gap:18px;font-size:13px;opacity:.95;margin-top:8px}
+.big .row b{display:block;font-size:18px}
+.mbars{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.mb{display:grid;grid-template-columns:34px 1fr 78px;gap:8px;align-items:center;font-size:13px}
+.mb .tr{height:18px;background:#eef1f7;border-radius:6px;overflow:hidden;display:flex}
+.mb .tr span{height:100%}
+.mb b{text-align:right}
+.mb.now{font-weight:900}
+.hold{display:flex;flex-direction:column;gap:8px;margin-top:12px;max-height:300px;overflow:auto}
+.h{display:grid;grid-template-columns:8px 1fr auto auto;gap:10px;align-items:center;font-size:13px;padding:8px;border-radius:10px;background:var(--bg)}
+.h .dot{width:8px;height:32px;border-radius:4px}
+.h input{width:64px;border:1px solid var(--line);border-radius:8px;padding:5px;text-align:right;font-family:inherit}
+.h button{border:0;background:none;color:#a3abbd;cursor:pointer;font-size:16px}
+.empty{color:var(--sub);font-size:13px;text-align:center;padding:16px}
+
+/* ===== 詳情 ===== */
+.ov{position:fixed;inset:0;background:rgba(10,14,30,.55);backdrop-filter:blur(3px);display:none;z-index:50;overflow:auto;padding:30px 16px}
+.ov.on{display:block}
+.dlg{max-width:1100px;margin:0 auto;background:var(--bg);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.dhd{padding:26px 30px;color:#fff;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative}
+.dhd h2{font-size:28px;font-weight:900}
+.dhd .x{position:absolute;right:18px;top:14px;background:rgba(255,255,255,.25);border:0;color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer}
+.dhd .tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.dhd .tags span{background:rgba(255,255,255,.2);border-radius:999px;padding:4px 10px;font-size:12px}
+.dhd .px{text-align:right;padding-right:40px}
+.dhd .px b{font-size:40px;font-weight:800;display:block}
+.dbd{padding:22px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.dbd .box{grid-column:span 12}
+@media(min-width:900px){.s7{grid-column:span 7!important}.s5{grid-column:span 5!important}.s4{grid-column:span 4!important}.s8{grid-column:span 8!important}.s6{grid-column:span 6!important}}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.stat{border-radius:16px;padding:14px;color:#fff}
+.stat small{font-size:12px;opacity:.85}
+.stat b{display:block;font-size:22px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:var(--sub);font-weight:500;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:8px 6px;border-bottom:1px solid var(--line)}
+td.r,th.r{text-align:right}
+.wbar{height:8px;border-radius:4px;background:#eef1f7;overflow:hidden;min-width:60px}
+.wbar span{display:block;height:100%;border-radius:4px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--sub);margin-top:6px}
+.legend i{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.seg{display:inline-flex;background:var(--bg);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:none;padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--sub)}
+.seg button.on{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.scroll{max-height:420px;overflow:auto}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;padding:7px 10px;border-radius:8px;z-index:99;display:none;white-space:nowrap}
+/* ===== 退休規劃 ===== */
+.plan{background:var(--panel);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:22px}
+.plan-hd{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:linear-gradient(90deg,#fff7ed,#fdf2f8,#eef2ff);cursor:pointer}
+.plan-hd h2{font-size:20px;font-weight:900}
+.plan-hd span{color:var(--sub);font-size:13px}
+.plan-bd{display:grid;grid-template-columns:320px 1fr;gap:0}
+@media(max-width:900px){.plan-bd{grid-template-columns:1fr}}
+.plan.closed .plan-bd{display:none}
+.pform{padding:22px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.pf label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+.pf .in{display:flex;align-items:center;border:2px solid var(--line);border-radius:14px;padding:0 12px;background:#fff}
+.pf .in:focus-within{border-color:#7b2ff7}
+.pf input{border:0;outline:0;flex:1;padding:12px 0;font-size:18px;font-weight:700;font-family:Inter,"Noto Sans TC";width:100%;background:none}
+.pf .in em{font-style:normal;color:var(--sub);font-size:13px}
+.adv{font-size:12px;color:var(--sub)}
+.adv summary{cursor:pointer;font-weight:700}
+.adv .g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.adv .g div{display:flex;flex-direction:column;gap:4px}
+.adv input{border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;width:100%}
+.pres{padding:22px 24px;display:flex;flex-direction:column;gap:16px}
+.verdict{border-radius:20px;padding:18px 20px;color:#fff;display:flex;gap:16px;align-items:center}
+.verdict .em{font-size:44px}
+.verdict h3{font-size:22px;font-weight:900}
+.verdict p{font-size:14px;opacity:.95;margin-top:4px;line-height:1.6}
+.bigs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.bigs div{background:var(--bg);border-radius:16px;padding:14px}
+.bigs small{color:var(--sub);font-size:12px}
+.bigs b{display:block;font-size:22px;margin-top:4px}
+.bigs i{font-style:normal;font-size:12px;color:var(--sub)}
+.alloc{display:flex;height:46px;border-radius:14px;overflow:hidden}
+.alloc div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;transition:width .4s}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.pick{border-radius:16px;padding:14px;border:2px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.pick .t{display:flex;justify-content:space-between;align-items:center}
+.pick .t b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:6px}
+.pick .t span{flex-shrink:0}
+.pick .t span{font-size:12px;color:#fff;border-radius:999px;padding:3px 9px;font-weight:700}
+.pick small{color:var(--sub);font-size:12px}
+.why{background:#f8fafc;border-left:5px solid #7b2ff7;border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.85}
+.why b{color:#7b2ff7}
+.why li{margin-left:18px}
+.apply{border:0;border-radius:14px;padding:14px;font-weight:900;font-size:15px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#ff7a18,#ff3d77,#7b2ff7)}
+.disc{font-size:12px;color:var(--sub)}
+/* ===== 持股試算(步驟6) ===== */
+.gmode{margin-top:12px;font-size:13px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border-radius:12px;padding:8px 10px}
+.gmode select{flex:1;border:0;border-radius:8px;padding:6px;font-family:inherit;font-weight:700}
+.mb{cursor:pointer;border-radius:8px;padding:2px 4px}
+.mb:hover,.mb.sel{background:#f1f4fb}
+.mb .yr{font-size:10px;color:var(--sub);display:block;line-height:1}
+.mdt{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.mdt .it{display:grid;grid-template-columns:44px 1fr auto;gap:8px;font-size:12px;align-items:center;background:var(--bg);border-radius:10px;padding:7px 9px}
+.mdt .it .d{font-weight:800;font-size:13px}
+.badge{font-size:10px;border-radius:6px;padding:1px 6px;font-weight:700;margin-left:4px}
+.b-ok{background:#dcfce7;color:#15803d}.b-est{background:#eef2ff;color:#4338ca}
+.addrow{display:flex;gap:6px;margin-top:10px}
+.addrow input{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-family:inherit}
+.addrow button{border:0;border-radius:10px;width:42px;background:var(--ink);color:#fff;font-size:18px;cursor:pointer}
+.h{grid-template-columns:8px 1fr!important;align-items:start!important}
+.h .top{display:flex;justify-content:space-between;gap:6px;align-items:center}
+.h .ctl{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.h select{border:1px solid var(--line);border-radius:8px;padding:4px;font-size:12px;font-family:inherit;max-width:150px}
+.h .cy{width:58px!important}
+.h .res{font-size:12px;color:var(--sub);margin-top:4px}
+.h .res b{color:var(--ink)}
+.hold{max-height:420px!important}
+/* ===== 技術分析(步驟7) ===== */
+.tabadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;align-self:flex-start}
+.tagrid{display:grid;grid-template-columns:220px 1fr;gap:20px;margin-top:12px}
+@media(max-width:800px){.tagrid{grid-template-columns:1fr}}
+.gauge{text-align:center}
+.gauge .lv{font-size:20px;font-weight:900;margin-top:-6px}
+.gauge small{color:var(--sub);font-size:12px}
+.dims{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.dim{display:grid;grid-template-columns:64px 1fr 34px;gap:8px;align-items:center;font-size:13px}
+.dim .tr{height:10px;background:#eef1f7;border-radius:5px;overflow:hidden}
+.dim .tr span{display:block;height:100%;border-radius:5px}
+.talk{display:flex;flex-direction:column;gap:10px}
+.talk div{display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--bg);border-radius:14px;padding:11px 12px;font-size:14px;line-height:1.7}
+.talk .e{font-size:22px;line-height:1.2}
+.talk b{color:var(--ink)}
+.talk small{display:block;color:var(--sub);font-size:12px}
+.rank{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.rank div{border-radius:14px;padding:12px;background:var(--bg)}
+.rank small{color:var(--sub);font-size:12px}
+.rank b{display:block;font-size:20px}
+.rank i{font-style:normal;font-size:12px;color:var(--sub)}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:#141a2e;color:#fff;padding:14px 20px;border-radius:14px;font-size:14px;line-height:1.6;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:92vw}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand">
+      <h1>💰 ETF 月配息規劃</h1>
+      <p>全台 ETF 一次看：分類、持股、配息月份、每月可以領多少</p>
+    </div>
+    <div class="tix">
+      <div class="tick"><small>加權指數</small><b class="num" id="tx">—</b><small id="txd"></small></div>
+      <div class="tick"><small>收錄 ETF</small><b class="num" id="nEtf">—</b><small id="upd"></small></div>
+      <button class="btn-up" id="btnUp">🔄 一鍵更新</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="plan" id="plan">
+    <div class="plan-hd" id="planHd"><h2>🎯 我的退休規劃</h2><span id="planTog">收合 ▲</span></div>
+    <div class="plan-bd">
+      <div class="pform">
+        <div class="pf"><label>現在年齡</label><div class="in"><input type="number" id="pAge" value="35"><em>歲</em></div></div>
+        <div class="pf"><label>預計幾歲退休</label><div class="in"><input type="number" id="pRet" value="60"><em>歲</em></div></div>
+        <div class="pf"><label>現在一次投入</label><div class="in"><input type="number" id="pLump" value="1000000" step="10000"><em>元</em></div></div>
+        <div class="pf"><label>之後每月投入</label><div class="in"><input type="number" id="pMon" value="20000" step="1000"><em>元/月</em></div></div>
+        <div class="pf"><label>退休後希望每月領</label><div class="in"><input type="number" id="pWant" value="50000" step="1000"><em>元/月</em></div></div>
+        <details class="adv"><summary>⚙️ 進階假設（可改）</summary>
+          <div class="g">
+            <div>市值型年報酬 %<input type="number" id="aG" value="7" step="0.5"></div>
+            <div>高股息年報酬 %<input type="number" id="aD" value="6" step="0.5"></div>
+            <div>債券年報酬 %<input type="number" id="aB" value="3" step="0.5"></div>
+            <div>每年通膨 %<input type="number" id="aI" value="2" step="0.5"></div>
+          </div>
+          <p style="margin-top:8px;line-height:1.6">報酬率是「股價漲幅＋配息再投入」的長期平均，故意抓保守。下面會附上資料庫裡這幾類 ETF 的實際數字給你對照。</p>
+        </details>
+      </div>
+      <div class="pres" id="pres"></div>
+    </div>
+  </div>
+  <div class="cats" id="cats"></div>
+
+  <div class="main">
+    <section>
+      <div class="bar">
+        <input id="q" placeholder="🔍 搜尋代號或名稱，例如 00878、高股息、半導體">
+        <select id="sort">
+          <option value="aum">規模大→小</option>
+          <option value="ttmYield">近一年殖利率高→低</option>
+          <option value="annYield">年化殖利率高→低</option>
+          <option value="ret1y">近一年漲幅高→低</option>
+          <option value="ta">技術面分數高→低</option>
+          <option value="id">代號</option>
+        </select>
+      </div>
+      <div class="bar">
+        <b style="font-size:13px;color:var(--sub)">配息</b><div class="chips" id="freqChips"></div>
+        <b style="font-size:13px;color:var(--sub);margin-left:8px">市場</b><div class="chips" id="regChips"></div>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <aside>
+      <div class="box big">
+        <h2>未來 12 個月預估配息 <span style="font-size:12px;opacity:.85" id="rangeTxt"></span></h2>
+        <div class="sum num" id="yearSum">$0</div>
+        <div style="font-size:13px;opacity:.9">扣二代健保補充保費後 <b class="num" id="netSum">$0</b></div>
+        <div class="row">
+          <div>平均每月<b class="num" id="avgM">$0</b></div>
+          <div>投入成本<b class="num" id="cost">$0</b></div>
+          <div>組合殖利率<b class="num" id="pYld">0%</b></div>
+        </div>
+        <div class="gmode">配息參考
+          <select id="gMode"></select>
+        </div>
+      </div>
+      <div class="box">
+        <h2>每月領多少 <span style="font-size:12px;color:var(--sub);font-weight:500">依發放日・點月份看明細</span></h2>
+        <div class="mbars" id="mbars"></div>
+        <div id="mdetail"></div>
+      </div>
+      <div class="box">
+        <h2>我的持股 <span style="font-size:12px;color:var(--sub);font-weight:500">張數可填小數=零股</span></h2>
+        <div class="addrow"><input id="addId" list="etfList" placeholder="輸入代號或名稱新增，如 00919"><button id="addBtn">＋</button></div>
+        <datalist id="etfList"></datalist>
+        <div class="hold" id="hold"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="ov" id="ov"><div class="dlg" id="dlg"></div></div>
+<div class="tip" id="tip"></div>
+
+<script>
+/* ---------- 分類配色:多彩大圖卡 ---------- */
+const CAT = {
+  "高股息":   {ic:"💵", g:["#ff8a00","#e52e71"]},
+  "市值型":   {ic:"🏛️", g:["#2563eb","#06b6d4"]},
+  "科技":     {ic:"🔬", g:["#7c3aed","#2563eb"]},
+  "債券":     {ic:"🛡️", g:["#0f766e","#22c55e"]},
+  "槓桿反向": {ic:"⚡", g:["#dc2626","#f97316"]},
+  "ESG永續":  {ic:"🌱", g:["#16a34a","#84cc16"]},
+  "金融":     {ic:"🏦", g:["#1e3a8a","#6366f1"]},
+  "不動產":   {ic:"🏢", g:["#92400e","#f59e0b"]},
+  "原物料期貨":{ic:"🛢️", g:["#a16207","#eab308"]},
+  "平衡型":   {ic:"⚖️", g:["#0e7490","#a855f7"]},
+  "其他主題": {ic:"🧩", g:["#475569","#94a3b8"]},
+};
+const grad = c => `linear-gradient(135deg,${CAT[c].g[0]},${CAT[c].g[1]})`;
+const col = c => CAT[c] ? CAT[c].g[0] : "#475569";
+const fmt = (n,d=0) => n==null||isNaN(n) ? "—" : Number(n).toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d});
+const money = n => "$" + fmt(Math.round(n));
+const yi = n => n ? (n>=1e8 ? fmt(n/1e8) + " 億" : fmt(n/1e4) + " 萬") : "—";
+const $ = s => document.querySelector(s);
+
+let S = null, TX = null, curCat = "全部", curFreq = "全部", curReg = "全部";
+let PF = load();   // 我的持股 [{id, lots}]
+
+function load(){ try{ return JSON.parse(localStorage.getItem("etf_pf")) || [{id:"00878",lots:10},{id:"0056",lots:10},{id:"00940",lots:20}] }catch(e){ return [] } }
+function save(){ try{ localStorage.setItem("etf_pf", JSON.stringify(PF)) }catch(e){} }
+
+fetch("data/summary.json?" + Date.now()).then(r => r.json()).then(d => {
+  S = d.etfs; TX = d.taiex; STAMP = d.updated;
+  $("#tx").textContent = fmt(TX.price, 2); $("#txd").textContent = TX.date;
+  $("#nEtf").textContent = S.length + " 檔"; $("#upd").textContent = "更新 " + d.updated;
+  buildCats(); buildChips(); render(); renderPF(); renderPlan();
+});
+
+function buildCats(){
+  const by = {};
+  S.forEach(e => (by[e.category] = by[e.category] || []).push(e));
+  const all = Object.keys(CAT).filter(c => by[c]);
+  $("#cats").innerHTML = [`<div class="cat ${curCat=="全部"?"on":""}" data-c="全部" style="background:linear-gradient(135deg,#141a2e,#3b4466)">
+      <div class="ic">🗂️</div><h3>全部 ETF</h3>
+      <div class="meta"><div>檔數<b class="num">${S.length}</b></div><div>有配息<b class="num">${S.filter(e=>e.perYear).length}</b></div></div></div>`]
+    .concat(all.map(c => {
+      const l = by[c], pay = l.filter(e => e.ttmYield > 0);
+      const avg = pay.length ? pay.reduce((a,e)=>a+e.ttmYield,0)/pay.length : 0;
+      return `<div class="cat ${curCat==c?"on":""}" data-c="${c}" style="background:${grad(c)}">
+        <div class="ic">${CAT[c].ic}</div><h3>${c}</h3>
+        <div class="meta"><div>檔數<b class="num">${l.length}</b></div><div>平均殖利率<b class="num">${avg?avg.toFixed(1)+"%":"—"}</b></div></div></div>`;
+    })).join("");
+  document.querySelectorAll(".cat").forEach(el => el.onclick = () => { curCat = el.dataset.c; buildCats(); render(); });
+}
+
+function buildChips(){
+  const mk = (id, list, get, set) => {
+    $(id).innerHTML = list.map(x => `<span class="chip ${get()==x?"on":""}">${x}</span>`).join("");
+    $(id).querySelectorAll(".chip").forEach(el => el.onclick = () => { set(el.textContent); buildChips(); render(); });
+  };
+  mk("#freqChips", ["全部","月配","季配","半年配","年配","不配息"], () => curFreq, v => curFreq = v);
+  mk("#regChips", ["全部","台股","海外"], () => curReg, v => curReg = v);
+}
+$("#q").oninput = render; $("#sort").onchange = render;
+
+function spark(m, color){
+  if (!m || m.length < 2) return "";
+  const v = m.map(x => x[1]), mn = Math.min(...v), mx = Math.max(...v), W = 260, H = 40;
+  const pts = v.map((y,i) => `${(i/(v.length-1)*W).toFixed(1)},${(H - (y-mn)/(mx-mn||1)*H).toFixed(1)}`).join(" ");
+  return `<svg viewBox="0 0 ${W} ${H+2}" width="100%" height="42" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linejoin="round"/></svg>`;
+}
+const monthsRow = (pm, color) => `<div class="months">${[...Array(12)].map((_,i)=>`<i class="${pm.includes(i+1)?"pay":""}" style="${pm.includes(i+1)?"background:"+color:""}">${i+1}</i>`).join("")}</div>`;
+
+function render(){
+  const q = $("#q").value.trim().toLowerCase(), key = $("#sort").value;
+  let l = S.filter(e => (curCat=="全部"||e.category==curCat) && (curFreq=="全部"||e.freq==curFreq) && (curReg=="全部"||e.region==curReg)
+      && (!q || (e.id+e.name+e.category+(e.issuer||"")+(e.top3||[]).join("")).toLowerCase().includes(q)));
+  l.sort((a,b) => key=="id" ? a.id.localeCompare(b.id) : key=="ta" ? ((b.ta||{}).score||0) - ((a.ta||{}).score||0) : (b[key]||0) - (a[key]||0));
+  $("#count").textContent = `共 ${l.length} 檔`;
+  $("#grid").innerHTML = l.slice(0, 120).map(e => {
+    const c = col(e.category), up = e.chg >= 0;
+    return `<div class="card" data-id="${e.id}">
+      <div class="hd" style="background:${grad(e.category)}">
+        <div class="code">${e.id} · ${e.category} · ${e.region}</div>
+        <div class="nm">${e.name}</div>
+        <span class="freq" style="color:${c}">${e.freq}</span>
+      </div>
+      <div class="bd">
+        <div class="pr"><b class="num">${fmt(e.price,2)}</b><span class="num" style="color:${up?"var(--up)":"var(--down)"}">${up?"▲":"▼"} ${fmt(Math.abs(e.chg),2)} (${fmt(e.chgPct,2)}%)</span></div>
+        ${spark(e.monthly, c)}
+        ${taBadge(e)}
+        <div class="kpis">
+          <div class="kpi"><small>近一年殖利率</small><b class="num">${e.ttmYield?e.ttmYield+"%":"—"}</b></div>
+          <div class="kpi"><small>規模</small><b class="num">${yi(e.aum)}</b></div>
+          <div class="kpi"><small>近一年漲跌</small><b class="num" style="color:${e.ret1y>=0?"var(--up)":"var(--down)"}">${fmt(e.ret1y,1)}%</b></div>
+        </div>
+        ${e.perYear ? `<div><div class="lbl">發放月份</div>${monthsRow(e.payMonths, c)}</div>` : ""}
+        ${e.annYield > 15 ? `<div class="warn">⚠️ 年化 ${e.annYield}% 偏高，配息可能含本金</div>` : ""}
+        <button class="add" style="background:${grad(e.category)}" data-add="${e.id}">＋ 加入我的試算</button>
+      </div></div>`;
+  }).join("") + (l.length > 120 ? `<div class="empty">還有 ${l.length-120} 檔，請用搜尋或分類縮小範圍</div>` : "");
+  document.querySelectorAll(".card").forEach(el => el.onclick = ev => {
+    if (ev.target.dataset.add) { addPF(ev.target.dataset.add); return; }
+    openDetail(el.dataset.id);
+  });
+}
+
+/* ---------- 我的持股 & 每月配息 ----------
+   每檔可選「配息參考」:最近一次 / 近一年 / 近年平均 / 某一年殖利率 / 自行輸入殖利率
+   已公告(除息日已出來)的配息直接用實際金額與發放日;其餘依去年同月的發放日估算 */
+const NHI = 0.0211, NHI_MIN = 20000;          // 二代健保補充保費:單次 ≥ 2萬 扣 2.11%
+const DV = {};                                 // 配息歷史快取
+let gMode = (() => { try { return localStorage.getItem("etf_gmode") || "avg" } catch(e) { return "avg" } })();
+let selMonth = null;
+const MODES = () => {
+  const y = new Date().getFullYear(), ys = [];
+  for (let i = 1; i <= 5; i++) ys.push(["y" + (y - i), `${y - i} 年殖利率`]);
+  return [["last","最近一次配息"],["ttm","近一年配息"],["avg","近年平均殖利率"], ...ys, ["custom","自行輸入殖利率"]];
+};
+function addPF(id){ const x = PF.find(p => p.id == id); x ? x.lots++ : PF.push({id, lots:1, mode:"auto"}); save(); renderPF(); }
+function modeOf(p){ return !p.mode || p.mode == "auto" ? gMode : p.mode; }
+function perPay(e, p){                         // 每股每次配多少
+  if (!e || !e.perYear) return 0;
+  const m = p ? modeOf(p) : gMode;
+  if (m == "last")   return e.lastDiv ? e.lastDiv.cash : 0;
+  if (m == "ttm")    return e.ttmCash / e.perYear;
+  if (m == "avg")    return avgYld(e) / 100 * e.price / e.perYear;
+  if (m == "custom") return (+p.cy || 0) / 100 * e.price / e.perYear;
+  if (m[0] == "y") { const v = (e.yearYields || {})[m.slice(1)]; return v ? v.yld / 100 * e.price / e.perYear : (e.lastDiv ? e.lastDiv.cash : 0); }
+  return 0;
+}
+async function loadDV(id){
+  if (DV[id]) return DV[id];
+  const e = S.find(x => x.id == id);
+  DV[id] = await fetch(`data/dividends/${id}${e && e.adj ? ".adj" : ""}.json`).then(r => r.ok ? r.json() : []).catch(() => []);
+  return DV[id];
+}
+const ym = d => d.getFullYear() * 100 + d.getMonth() + 1;
+function schedule(){                            // 未來12個月每一筆入帳
+  const today = new Date(); today.setHours(0,0,0,0);
+  const start = new Date(today.getFullYear(), today.getMonth(), 1);
+  const months = [...Array(12)].map((_,i) => new Date(start.getFullYear(), start.getMonth() + i, 1));
+  const keys = months.map(ym), items = [];
+  PF.forEach(p => {
+    const e = S.find(x => x.id == p.id); if (!e || !p.lots) return;
+    const sh = p.lots * 1000, hist = DV[p.id] || [], done = new Set();
+    hist.filter(d => d.pay && new Date(d.pay) >= today).forEach(d => {          // 已公告
+      const k = ym(new Date(d.pay)); if (!keys.includes(k)) return;
+      done.add(k); items.push({k, date:d.pay, e, per:d.cash, amt:d.cash*sh, ok:true, ex:d.ex});
+    });
+    e.payMonths.forEach(pm => months.forEach(mo => {                            // 預估
+      if (mo.getMonth() + 1 != pm) return;
+      const k = ym(mo); if (done.has(k)) return;
+      const ref = hist.slice().reverse().find(d => d.pay && +d.pay.slice(5,7) == pm);
+      const day = ref ? Math.min(+ref.pay.slice(8,10), 28) : 15;
+      const dt = new Date(mo.getFullYear(), mo.getMonth(), day);
+      if (dt < today) return;                                                    // 本月已發過
+      const per = perPay(e, p);
+      if (per > 0) items.push({k, date:`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`, e, per, amt:per*sh, ok:false});
+    }));
+  });
+  items.forEach(x => x.nhi = x.amt >= NHI_MIN ? x.amt * NHI : 0);
+  return {months, keys, items};
+}
+async function renderPF(){
+  await Promise.all(PF.map(p => loadDV(p.id)));
+  const {months, keys, items} = schedule();
+  const gross = items.reduce((s,x)=>s+x.amt,0), nhi = items.reduce((s,x)=>s+x.nhi,0);
+  let cost = 0; PF.forEach(p => { const e = S.find(x => x.id == p.id); if (e) cost += e.price * p.lots * 1000; });
+  $("#yearSum").textContent = money(gross); $("#netSum").textContent = money(gross - nhi);
+  $("#avgM").textContent = money(gross/12); $("#cost").textContent = money(cost);
+  $("#pYld").textContent = cost ? (gross/cost*100).toFixed(2) + "%" : "0%";
+  $("#rangeTxt").textContent = `${months[0].getFullYear()}/${months[0].getMonth()+1}～${months[11].getFullYear()}/${months[11].getMonth()+1}`;
+  $("#gMode").innerHTML = MODES().map(([v,t]) => `<option value="${v}" ${v==gMode?"selected":""}>${t}</option>`).join("");
+  const byM = keys.map(k => items.filter(x => x.k == k));
+  const mx = Math.max(1, ...byM.map(a => a.reduce((s,x)=>s+x.amt,0)));
+  $("#mbars").innerHTML = byM.map((a,i) => {
+    const t = a.reduce((s,x)=>s+x.amt,0), mo = months[i];
+    return `<div class="mb ${selMonth==keys[i]?"sel":""} ${i==0?"now":""}" data-k="${keys[i]}"><span>${mo.getMonth()+1}月${i==0||mo.getMonth()==0?`<i class="yr">${mo.getFullYear()}</i>`:""}</span>
+      <div class="tr">${a.map(x=>`<span title="${x.e.id} ${x.e.name} ${money(x.amt)}" style="width:${x.amt/mx*100}%;background:${col(x.e.category)};${x.ok?"":"opacity:.75"}"></span>`).join("")}</div><b class="num">${money(t)}</b></div>`;
+  }).join("");
+  $("#mbars").querySelectorAll(".mb").forEach(el => el.onclick = () => { selMonth = selMonth == +el.dataset.k ? null : +el.dataset.k; renderPF(); });
+  const det = selMonth ? items.filter(x => x.k == selMonth).sort((a,b) => a.date.localeCompare(b.date)) : [];
+  $("#mdetail").innerHTML = selMonth ? `<div class="mdt">${det.length ? det.map(x => `<div class="it">
+      <span class="d">${+x.date.slice(5,7)}/${+x.date.slice(8,10)}</span>
+      <span><b>${x.e.id}</b> ${x.e.name}<span class="badge ${x.ok?"b-ok":"b-est"}">${x.ok?"已公告":"預估"}</span><br><span style="color:var(--sub)">每股 ${fmt(x.per,3)} 元${x.nhi?` · 扣補充保費 ${money(x.nhi)}`:""}</span></span>
+      <b class="num">${money(x.amt - x.nhi)}</b></div>`).join("") : `<div class="empty">這個月沒有入帳</div>`}</div>` : "";
+  $("#etfList").innerHTML = S.map(e => `<option value="${e.id} ${e.name}">`).join("");
+  $("#hold").innerHTML = PF.length ? PF.map((p,i) => {
+    const e = S.find(x => x.id == p.id); if (!e) return "";
+    const per = perPay(e, p), yr = items.filter(x => x.e.id == e.id).reduce((s,x)=>s+x.amt,0);
+    return `<div class="h"><span class="dot" style="background:${grad(e.category)}"></span><div>
+      <div class="top"><span><b>${e.id}</b> ${e.name}</span><span><input type="number" min="0" step="0.001" value="${p.lots}" data-i="${i}" data-f="lots"> 張 <button data-del="${i}">✕</button></span></div>
+      <div class="ctl"><select data-i="${i}" data-f="mode"><option value="auto">跟隨上方（${MODES().find(m=>m[0]==gMode)[1]}）</option>${MODES().map(([v,t]) => `<option value="${v}" ${p.mode==v?"selected":""}>${t}</option>`).join("")}</select>
+      ${modeOf(p)=="custom" ? `<input class="cy" type="number" step="0.1" value="${p.cy||""}" placeholder="%" data-i="${i}" data-f="cy">%` : ""}</div>
+      <div class="res">${e.freq} · 每次每股 <b>${fmt(per,3)}</b> 元 · 每次約 <b>${money(per*p.lots*1000)}</b> · 一年 <b>${money(yr)}</b></div>
+    </div></div>`;
+  }).join("") : `<div class="empty">上面輸入代號，或點左邊圖卡「＋ 加入我的試算」</div>`;
+  $("#hold").querySelectorAll("[data-f]").forEach(el => el.onchange = () => {
+    const p = PF[el.dataset.i], f = el.dataset.f;
+    p[f] = f == "mode" ? el.value : (+el.value || 0); save(); renderPF();
+  });
+  $("#hold").querySelectorAll("[data-del]").forEach(el => el.onclick = () => { PF.splice(el.dataset.del, 1); save(); renderPF(); });
+}
+$("#gMode").onchange = ev => { gMode = ev.target.value; try { localStorage.setItem("etf_gmode", gMode) } catch(e){}; renderPF(); };
+$("#addBtn").onclick = () => {
+  const v = $("#addId").value.trim().split(" ")[0].toUpperCase();
+  const e = S.find(x => x.id == v) || S.find(x => x.name.includes($("#addId").value.trim()));
+  if (e) { addPF(e.id); $("#addId").value = ""; } else alert("找不到這檔 ETF");
+};
+$("#addId").addEventListener("keydown", ev => ev.key == "Enter" && $("#addBtn").click());
+
+/* ---------- 技術分析白話評比 ---------- */
+function taLevel(s){
+  if (s == null) return ["資料不足","#94a3b8","⚪"];
+  if (s >= 70) return ["偏強","#16a34a","🟢"];
+  if (s >= 50) return ["中性偏多","#ca8a04","🟡"];
+  if (s >= 35) return ["整理中","#ea580c","🟠"];
+  return ["偏弱","#dc2626","🔴"];
+}
+function taBadge(e){
+  if (!e.ta) return "";
+  const [t, c, i] = taLevel(e.ta.score);
+  return `<span class="tabadge" style="background:${c}1a;color:${c}">${i} 技術面 ${e.ta.score} 分 · ${t}</span>`;
+}
+function gaugeSvg(score, color){
+  const a = Math.PI * (1 - score/100), x = 110 + 85*Math.cos(a), y = 105 - 85*Math.sin(a);
+  return `<svg viewBox="0 0 220 120" width="100%" style="max-width:220px">
+    <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#dc2626"/><stop offset=".4" stop-color="#f59e0b"/><stop offset=".7" stop-color="#eab308"/><stop offset="1" stop-color="#16a34a"/></linearGradient></defs>
+    <path d="M25,105 A85,85 0 0 1 195,105" fill="none" stroke="#eef1f7" stroke-width="18" stroke-linecap="round"/>
+    <path d="M25,105 A85,85 0 0 1 195,105" fill="none" stroke="url(#gg)" stroke-width="18" stroke-linecap="round" stroke-dasharray="${score/100*267} 400"/>
+    <circle cx="${x}" cy="${y}" r="9" fill="#fff" stroke="${color}" stroke-width="4"/>
+    <text x="110" y="98" text-anchor="middle" font-size="34" font-weight="800" fill="${color}" font-family="Inter">${score}</text></svg>`;
+}
+function rankIn(e, key, desc = true){
+  const l = S.filter(x => x.category == e.category && x[key] != null).sort((a,b) => desc ? b[key]-a[key] : a[key]-b[key]);
+  return [l.findIndex(x => x.id == e.id) + 1, l.length];
+}
+function taBox(e){
+  const t = e.ta; if (!t) return `<div class="box"><h2>📊 技術分析白話評比</h2><div class="empty">上市太久沒交易或資料太少，暫時無法分析</div></div>`;
+  const [lv, c, ic] = taLevel(t.score), px = e.price, M = t.ma;
+  const talk = [];
+  // 趨勢
+  const above = [["20","月線"],["60","季線"],["240","年線"]].filter(([n]) => M[n] && px > M[n]).map(x => x[1]);
+  const g = (a,b) => a != null && b != null && a > b;
+  const up = g(px, M["20"]) && g(M["20"], M["60"]) && (M["120"] == null || g(M["60"], M["120"]));
+  const down = !g(px, M["20"]) && !g(M["20"], M["60"]);
+  const below = [["20","月線"],["60","季線"],["240","年線"]].filter(([n]) => M[n] && px <= M[n]).map(x => x[1]);
+  if (up) talk.push(["📈", `<b>趨勢：上升中</b>，股價站在${above.join("、")}之上，短中長均線由上而下排好（多頭排列）。`, "白話：過去一個月、一季買進的人，現在大多是賺錢的，氣氛偏樂觀。"]);
+  else if (down) talk.push(["📉", `<b>趨勢：偏弱</b>，股價跌破${below.join("、")}，月線也在季線之下。`, "白話：最近買的人多數套牢，短線上方有賣壓；不要一次重押。"]);
+  else talk.push(["↔️", `<b>趨勢：盤整中</b>，${above.length ? "站在" + above.join("、") + "之上" : ""}${above.length && below.length ? "，但" : ""}${below.length ? "跌破" + below.join("、") : ""}。`, "白話：多空在拉鋸，還沒走出明確方向，適合分批、不追高。"]);
+  // 動能
+  if (t.rsi != null) {
+    if (t.rsi >= 80) talk.push(["🔥", `<b>短線過熱</b>（RSI ${t.rsi}）`, "白話：最近漲太快，像跑太快會喘，很容易回檔；想買可以等拉回再進場。"]);
+    else if (t.rsi <= 30) talk.push(["🧊", `<b>短線超跌</b>（RSI ${t.rsi}，KD ${t.k}）`, "白話：最近跌比較兇，賣壓可能快宣洩完；短線容易反彈，但不代表已經止跌，可以分批撿。"]);
+    else talk.push([t.macd > 0 ? "🚀" : "🐢", `<b>動能：${t.macd > 0 ? "往上" : "往下"}</b>（RSI ${t.rsi}、KD ${t.k}/${t.d}${t.k > t.d ? " 黃金交叉" : " 死亡交叉"}）`, t.macd > 0 ? "白話：買盤力道還在，推著價格往上走。" : "白話：最近賣的人比買的人急，短線力道偏弱。"]);
+  }
+  // 位置
+  talk.push(["📍", `<b>位置：一年區間的 ${Math.round(t.pos)}%</b>（低 ${fmt(t.lo52,2)} ～ 高 ${fmt(t.hi52,2)}）`,
+    t.pos >= 85 ? "白話：接近一年來最高點，買在這裡要有心理準備可能先套一下。" : t.pos <= 20 ? "白話：在一年來的相對低檔，價格相對便宜。" : "白話：在一年高低點的中間，不算貴也不算便宜。"]);
+  // 波動
+  if (t.vol != null) { const r = t.vol / TX.vol;
+    talk.push(["🎢", `<b>波動：一年約 ${t.vol}%</b>，是大盤的 ${r.toFixed(1)} 倍；一年內最大跌幅 ${t.mdd}%`,
+      r < .6 ? "白話：走勢很穩，像搭電扶梯，適合怕晃的人。" : r < 1.1 ? "白話：起伏和大盤差不多，正常範圍。" : "白話：上下震盪比大盤大，像雲霄飛車，資金要放得住才適合。"]); }
+  // 填息
+  if (t.fills && t.fills.length) {
+    const last = t.fills[t.fills.length-1];
+    talk.push(["💧", `<b>填息：近 ${t.fills.length} 次填了 ${t.fillRate.split("/")[0]} 次</b>${t.fillAvg ? `，平均 ${t.fillAvg} 個交易日填息` : ""}`,
+      last.days == null ? `白話：最近一次（${last.ex} 配 ${fmt(last.cash,3)} 元）還沒填息，已經過了 ${last.waited} 個交易日，等於配息暫時被股價吃掉。` : `白話：配完息股價很快漲回來，等於${t.fillAvg <= 10 ? "真的有賺到配息" : "配息有拿到，只是要等一陣子"}。`]);
+  }
+  // 相對大盤
+  if (t.rel12 != null) talk.push([t.rel12 >= 0 ? "🏆" : "🐌", `<b>和大盤比：近一年${t.rel12 >= 0 ? "贏" : "輸"}大盤 ${Math.abs(t.rel12).toFixed(1)} 個百分點</b>${t.rel3 != null ? `，近三個月${t.rel3 >= 0 ? "贏" : "輸"} ${Math.abs(t.rel3).toFixed(1)}` : ""}`,
+    e.category == "債券" ? "白話：債券本來就不是拿來跟股市比漲幅，主要看穩定和配息。" : t.rel12 >= 0 ? "白話：選這檔比直接買大盤還好。" : "白話：單看價差不如直接買大盤，要看配息能不能補回來。"]);
+  // 殖利率便宜度
+  const ay = avgYld(e);
+  if (e.ttmYield && ay) talk.push(["💰", `<b>殖利率：現在 ${e.ttmYield}%，過去平均 ${ay.toFixed(1)}%</b>`,
+    e.ttmYield > ay * 1.1 ? "白話：現在的殖利率比過去高，對存股族來說價格相對划算（但要確認不是配本金）。" : e.ttmYield < ay * .9 ? "白話：現在殖利率比過去低，表示股價漲多了、買進的配息報酬變薄。" : "白話：殖利率跟過去差不多，價格合理。"]);
+  const sumUp = t.score >= 70 ? "整體偏強：趨勢和動能都站在多方，適合續抱；新買的人留意別追在過熱的位置。"
+    : t.score >= 50 ? "整體中性偏多：大方向沒壞，可以用定期定額或分批買進。"
+    : t.score >= 35 ? "整體在整理：短線方向不明，存股族照紀律分批，短線操作的人先觀望。"
+    : "整體偏弱：短線還在找底，不急著一次買滿，可以等站回月線再加碼。";
+  const lev = e.category == "槓桿反向";
+  const sumUp2 = lev ? "⚠️ 這是槓桿／反向型 ETF，會每天重新平衡、長期持有會有耗損，只適合短線操作，不適合存股或退休規劃。技術面：" + sumUp.replace(/：.*/, "") : sumUp;
+  const [r1, n1] = rankIn({...e, _:0}, "ttmYield"), rs = S.filter(x => x.category == e.category && x.ta).sort((a,b) => b.ta.score - a.ta.score);
+  const r2 = rs.findIndex(x => x.id == e.id) + 1, [r3, n3] = rankIn(e, "ret1y"), [r4, n4] = rankIn(e, "aum");
+  const dim = (nm, v, cc) => `<div class="dim"><span>${nm}</span><div class="tr"><span style="width:${v ?? 0}%;background:${cc}"></span></div><b class="num">${v ?? "—"}</b></div>`;
+  return `<div class="box"><h2>📊 技術分析白話評比 <span style="font-size:12px;color:var(--sub);font-weight:500">${e.date} 收盤資料</span></h2>
+    <div class="tagrid">
+      <div><div class="gauge">${gaugeSvg(t.score, c)}<div class="lv" style="color:${c}">${ic} ${lv}</div><small>綜合技術面分數（0～100）</small></div>
+        <div class="dims">${dim("趨勢", t.trend, "#2563eb")}${dim("動能", t.mom, "#e52e71")}${dim("穩定度", t.risk, "#16a34a")}${dim("位置", Math.round(t.pos), "#f59e0b")}</div></div>
+      <div class="talk">
+        <div style="background:${c}14;border:2px solid ${c}55"><span class="e">${ic}</span><span><b>一句話總結：</b>${sumUp2}</span></div>
+        ${talk.map(([i, a, b]) => `<div><span class="e">${i}</span><span>${a}<small>${b}</small></span></div>`).join("")}
+      </div>
+    </div>
+    <h2 style="margin-top:18px;font-size:16px">🏅 同類評比（${e.category}類 ${rs.length} 檔中）</h2>
+    <div class="rank">
+      <div><small>技術面分數</small><b class="num">第 ${r2 || "—"} 名</b><i>共 ${rs.length} 檔</i></div>
+      <div><small>近一年殖利率</small><b class="num">第 ${r1 || "—"} 名</b><i>共 ${n1} 檔</i></div>
+      <div><small>近一年漲幅</small><b class="num">第 ${r3 || "—"} 名</b><i>共 ${n3} 檔</i></div>
+      <div><small>規模</small><b class="num">第 ${r4 || "—"} 名</b><i>共 ${n4} 檔</i></div>
+    </div>
+    <h2 style="margin-top:18px;font-size:16px">近一年日線 <span class="legend" style="margin:0"><span><i style="background:${col(e.category)}"></i>收盤</span><span><i style="background:#f59e0b"></i>月線(20日)</span><span><i style="background:#7c3aed"></i>季線(60日)</span><span>💧除息日</span></span></h2>
+    <div id="daily" style="margin-top:8px"><div class="empty">載入中…</div></div>
+    <div class="disc" style="margin-top:10px">※ 技術分析只看過去的價格與成交量，用來了解「現在的狀態」，不能預測未來，也不構成投資建議。</div>
+  </div>`;
+}
+async function dailyChart(el, e){
+  const p = await fetch(`data/prices/${e.id}.json`).then(r => r.json()).catch(() => []);
+  const dv = DV[e.id] || [];
+  const all = p.filter(r => r[4] > 0), c = all.map(r => r[4]);
+  const ma = n => c.map((_,i) => i >= n-1 ? c.slice(i-n+1, i+1).reduce((a,b)=>a+b,0)/n : null);
+  const m20 = ma(20), m60 = ma(60), N = Math.min(250, all.length), off = all.length - N;
+  const d = all.slice(off), s20 = m20.slice(off), s60 = m60.slice(off), cc = c.slice(off);
+  if (N < 5) { el.innerHTML = `<div class="empty">資料不足</div>`; return; }
+  const W = 900, H = 240, P = {l:50, r:12, t:10, b:24};
+  const vals = cc.concat(s20, s60).filter(v => v != null), mn = Math.min(...vals), mx = Math.max(...vals);
+  const X = i => P.l + i/(N-1)*(W-P.l-P.r), Y = v => P.t + (1-(v-mn)/(mx-mn||1))*(H-P.t-P.b);
+  const path = a => a.map((v,i) => v == null ? "" : `${i && a[i-1] != null ? "L" : "M"}${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join("");
+  const exs = dv.filter(x => x.ex >= d[0][0]).map(x => ({x, i: d.findIndex(r => r[0] >= x.ex)})).filter(o => o.i >= 0);
+  const months = d.map((r,i) => [r[0].slice(0,7), i]).filter((v,i,a) => i == 0 || v[0] != a[i-1][0]).filter((_,k) => k % 2 == 0);
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%">
+    ${[0,.25,.5,.75,1].map(t => { const v = mn + t*(mx-mn); return `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e4e8f1"/><text x="${P.l-6}" y="${Y(v)+4}" font-size="11" text-anchor="end" fill="#5b6478">${fmt(v,1)}</text>`; }).join("")}
+    ${months.map(([m,i]) => `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" fill="#5b6478">${m.slice(2).replace("-","/")}</text>`).join("")}
+    ${exs.map(o => `<line x1="${X(o.i)}" x2="${X(o.i)}" y1="${P.t}" y2="${H-P.b}" stroke="#06b6d4" stroke-dasharray="3 3" opacity=".6"/><text x="${X(o.i)}" y="${P.t+12}" font-size="13" text-anchor="middle"><title>${o.x.ex} 除息 ${o.x.cash} 元</title>💧</text>`).join("")}
+    <path d="${path(s60)}" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
+    <path d="${path(s20)}" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+    <path d="${path(cc)}" fill="none" stroke="${col(e.category)}" stroke-width="2.4"/>
+    <line id="dv" y1="${P.t}" y2="${H-P.b}" stroke="#141a2e" opacity="0"/><rect x="${P.l}" y="0" width="${W-P.l-P.r}" height="${H}" fill="transparent" id="dhit"/></svg>`;
+  const svg = el.querySelector("svg"), tip = $("#tip"), ln = el.querySelector("#dv");
+  el.querySelector("#dhit").onmousemove = ev => {
+    const r = svg.getBoundingClientRect(), i = Math.max(0, Math.min(N-1, Math.round(((ev.clientX-r.left)/r.width*W - P.l)/(W-P.l-P.r)*(N-1))));
+    ln.setAttribute("x1", X(i)); ln.setAttribute("x2", X(i)); ln.setAttribute("opacity", .3);
+    tip.style.display = "block"; tip.style.left = ev.clientX + 14 + "px"; tip.style.top = ev.clientY - 10 + "px";
+    tip.innerHTML = `${d[i][0]}<br>收盤 ${fmt(cc[i],2)}　量 ${fmt(d[i][5])} 張<br>月線 ${fmt(s20[i],2)}　季線 ${fmt(s60[i],2)}`;
+  };
+  el.querySelector("#dhit").onmouseleave = () => { tip.style.display = "none"; ln.setAttribute("opacity", 0); };
+}
+
+/* ---------- 單檔詳情 ---------- */
+async function openDetail(id){
+  const e = S.find(x => x.id == id), c = col(e.category);
+  const [h, dv] = await Promise.all([
+    fetch(`data/holdings/${id}.json`).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    loadDV(id),
+  ]);
+  const up = e.chg >= 0, G = CAT[e.category].g;
+  const stat = (t, v, i) => `<div class="stat" style="background:linear-gradient(135deg,${G[i%2]},${G[(i+1)%2]})"><small>${t}</small><b class="num">${v}</b></div>`;
+  const yy = Object.entries(e.yearYields || {}).reverse();
+  const hold = (h.full && h.full.length) ? h.full : (h.top10 || []).map(x => [x[1], null, x[2], ""]);
+  const mxw = Math.max(1, ...hold.map(x => x[2] || 0));
+  $("#dlg").innerHTML = `
+  <div class="dhd" style="background:${grad(e.category)}">
+    <button class="x" onclick="closeDetail()">✕</button>
+    <div><div style="opacity:.85;font-weight:700">${e.id} · ${e.market}</div><h2>${e.name}</h2>
+      <div class="tags"><span>${CAT[e.category].ic} ${e.category}</span><span>${e.region}</span><span>${e.freq}</span>${h.style?`<span>${h.style}</span>`:""}${h.issuer?`<span>${h.issuer}</span>`:""}</div></div>
+    <div class="px"><small>${e.date} 收盤</small><b class="num">${fmt(e.price,2)}</b><span class="num" style="font-weight:700">${up?"▲":"▼"} ${fmt(Math.abs(e.chg),2)} (${fmt(e.chgPct,2)}%)</span></div>
+  </div>
+  <div class="dbd">
+    <div class="box"><div class="stats">
+      ${stat("規模", yi(h.aum||e.aum), 0)}${stat("近一年殖利率", e.ttmYield? e.ttmYield+"%":"—", 1)}${stat("年化殖利率", e.annYield? e.annYield+"%":"—", 0)}
+      ${stat("近一年配息", e.ttmCash? fmt(e.ttmCash,3)+" 元":"—", 1)}${stat("經理費", h.fee||"—", 0)}${stat("近一年漲跌", fmt(e.ret1y,1)+"%", 1)}
+    </div>${h.benchmark?`<div style="font-size:13px;color:var(--sub);margin-top:10px">追蹤指數：${h.benchmark}　｜　成立日：${h.inception||"—"}${h.manager?"　｜　經理人："+h.manager:""}</div>`:""}</div>
+
+    ${taBox(e)}
+    <div class="box s8"><h2>近 60 個月走勢 vs 大盤 <span class="seg" id="mode"><button class="on" data-m="pct">累積漲跌%</button><button data-m="px">股價</button></span></h2>
+      <div id="chart" style="margin-top:10px"></div>
+      <div class="legend"><span><i style="background:${c}"></i>${e.name}</span><span><i style="background:#94a3b8"></i>加權指數</span></div></div>
+
+    <div class="box s4"><h2>配息時間表</h2>
+      <div style="margin-top:10px"><div class="lbl">除息月份</div>${monthsRow(e.exMonths, G[1])}</div>
+      <div style="margin-top:10px"><div class="lbl">發放月份（錢入帳）</div>${monthsRow(e.payMonths, c)}</div>
+      <div class="lbl" style="margin-top:14px">歷年殖利率（配息合計 ÷ 當年均價）</div>
+      <table><tr><th>年度</th><th class="r">配息</th><th class="r">均價</th><th class="r">殖利率</th></tr>
+      ${yy.map(([y,v]) => `<tr><td>${y}</td><td class="r num">${fmt(v.cash,3)}</td><td class="r num">${fmt(v.avgPx,2)}</td><td class="r num"><b>${v.yld}%</b></td></tr>`).join("") || `<tr><td colspan=4 class="empty">尚無配息紀錄</td></tr>`}</table></div>
+
+    <div class="box s7"><h2>持股明細 <span style="font-size:12px;color:var(--sub);font-weight:500">${hold.length} 檔 · ${h.fullDate||h.top10Date||""}</span></h2>
+      <div class="scroll" style="margin-top:8px">${hold.length ? `<table><tr><th>#</th><th>名稱</th><th class="r">持股(千股)</th><th>比重</th><th class="r">%</th></tr>
+      ${hold.map((x,i) => `<tr><td>${i+1}</td><td>${x[0]}</td><td class="r num">${x[1]!=null?fmt(x[1]):"—"}</td><td><div class="wbar"><span style="width:${(x[2]||0)/mxw*100}%;background:${grad(e.category)}"></span></div></td><td class="r num"><b>${fmt(x[2],2)}</b></td></tr>`).join("")}</table>`
+      : `<div class="empty">這檔沒有個股持股（期貨/槓桿/反向或 REITs）</div>`}</div></div>
+
+    <div class="box s5"><h2>${e.region=="海外"?"地區 / 產業":"產業"}比重</h2><div id="donut" style="margin-top:8px"></div></div>
+
+    <div class="box"><h2>配息紀錄</h2><div class="scroll" style="margin-top:8px"><table>
+      <tr><th>除息日</th><th>發放日</th><th class="r">每股配息</th><th class="r">每張可領</th></tr>
+      ${dv.slice().reverse().slice(0,24).map(d => `<tr><td>${d.ex}</td><td>${d.pay||"—"}</td><td class="r num">${fmt(d.cash,3)}</td><td class="r num"><b>${money(d.cash*1000)}</b></td></tr>`).join("") || `<tr><td colspan=4 class="empty">尚無配息</td></tr>`}
+    </table></div></div>
+  </div>`;
+  $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  const draw = m => lineChart($("#chart"), e, m);
+  draw("pct");
+  $("#mode").querySelectorAll("button").forEach(b => b.onclick = () => { $("#mode").querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); draw(b.dataset.m); });
+  donut($("#donut"), (h.industry||[]).filter(x => x[1] > 0), e.category);
+  if (e.ta) dailyChart($("#daily"), e);
+}
+function closeDetail(){ $("#ov").classList.remove("on"); document.body.style.overflow = ""; }
+$("#ov").onclick = ev => { if (ev.target.id == "ov") closeDetail(); };
+document.addEventListener("keydown", ev => ev.key == "Escape" && closeDetail());
+
+/* ---------- 線圖: ETF vs 大盤 ---------- */
+function lineChart(el, e, mode){
+  const m = e.monthly, tm = Object.fromEntries(TX.monthly), W = 640, H = 260, P = {l:50, r:50, t:12, b:26};
+  if (!m || m.length < 2) { el.innerHTML = `<div class="empty">資料不足</div>`; return; }
+  const a = m.map(x => x[1]), b = m.map(x => tm[x[0]] ?? null);
+  const b0 = b.find(v => v != null), a0 = a[0];
+  const sa = mode == "pct" ? a.map(v => (v/a0-1)*100) : a;
+  const sb = mode == "pct" ? b.map(v => v==null?null:(v/b0-1)*100) : b;
+  const ext = arr => { const v = arr.filter(x => x != null); return [Math.min(...v), Math.max(...v)]; };
+  let [amn, amx] = ext(sa), [bmn, bmx] = ext(sb);
+  if (mode == "pct") { amn = bmn = Math.min(amn, bmn); amx = bmx = Math.max(amx, bmx); }
+  const X = i => P.l + i/(m.length-1)*(W-P.l-P.r);
+  const Y = (v, mn, mx) => P.t + (1 - (v-mn)/(mx-mn||1)) * (H-P.t-P.b);
+  const path = (arr, mn, mx) => arr.map((v,i) => v==null ? "" : `${i&&arr[i-1]!=null?"L":"M"}${X(i).toFixed(1)},${Y(v,mn,mx).toFixed(1)}`).join("");
+  const ticks = [0, .25, .5, .75, 1].map(t => amn + t*(amx-amn));
+  const c = col(e.category);
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="overflow:visible">
+    ${ticks.map(v => `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v,amn,amx)}" y2="${Y(v,amn,amx)}" stroke="#e4e8f1"/><text x="${P.l-8}" y="${Y(v,amn,amx)+4}" font-size="11" text-anchor="end" fill="#5b6478">${mode=="pct"?v.toFixed(0)+"%":fmt(v,1)}</text>`).join("")}
+    ${mode=="px" ? [0,.5,1].map(t => { const v = bmn+t*(bmx-bmn); return `<text x="${W-P.r+8}" y="${Y(v,bmn,bmx)+4}" font-size="11" fill="#94a3b8">${fmt(v)}</text>`; }).join("") : ""}
+    ${m.filter((x,i) => i % 12 == 0).map(x => { const i = m.indexOf(x); return `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" fill="#5b6478">${x[0].slice(0,4)}</text>`; }).join("")}
+    <path d="${path(sb,bmn,bmx)}" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+    <path d="${path(sa,amn,amx)}" fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round"/>
+    <line id="hv" y1="${P.t}" y2="${H-P.b}" stroke="#141a2e" stroke-width="1" opacity="0"/>
+    <rect x="${P.l}" y="0" width="${W-P.l-P.r}" height="${H}" fill="transparent" id="hit"/>
+  </svg>`;
+  const svg = el.querySelector("svg"), tip = $("#tip"), hv = el.querySelector("#hv");
+  el.querySelector("#hit").onmousemove = ev => {
+    const r = svg.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width * W;
+    const i = Math.max(0, Math.min(m.length-1, Math.round((x-P.l)/(W-P.l-P.r)*(m.length-1))));
+    hv.setAttribute("x1", X(i)); hv.setAttribute("x2", X(i)); hv.setAttribute("opacity", .3);
+    tip.style.display = "block"; tip.style.left = ev.clientX + 14 + "px"; tip.style.top = ev.clientY - 10 + "px";
+    tip.innerHTML = `${m[i][0]}<br>${e.id}：${fmt(a[i],2)}（${fmt((a[i]/a0-1)*100,1)}%）<br>大盤：${b[i]!=null?fmt(b[i])+"（"+fmt((b[i]/b0-1)*100,1)+"%）":"—"}`;
+  };
+  el.querySelector("#hit").onmouseleave = () => { tip.style.display = "none"; hv.setAttribute("opacity", 0); };
+}
+
+/* ---------- 甜甜圈: 產業比重 ---------- */
+function donut(el, data, cat){
+  if (!data.length) { el.innerHTML = `<div class="empty">無產業資料</div>`; return; }
+  const pal = ["#2563eb","#e52e71","#ff8a00","#16a34a","#7c3aed","#06b6d4","#f59e0b","#dc2626","#0f766e","#6366f1","#84cc16","#a855f7","#64748b"];
+  const top = data.slice(0, 9), rest = data.slice(9).reduce((s,x)=>s+x[1],0);
+  if (rest > 0) top.push(["其他", rest]);
+  const tot = top.reduce((s,x)=>s+x[1],0); let acc = 0;
+  const R = 70, r = 44, cx = 90, cy = 90;
+  const arc = (a0, a1) => { const p = (a,rr) => [cx + rr*Math.sin(a), cy - rr*Math.cos(a)]; const big = a1-a0 > Math.PI ? 1 : 0;
+    const [x0,y0] = p(a0,R), [x1,y1] = p(a1,R), [x2,y2] = p(a1,r), [x3,y3] = p(a0,r);
+    return `M${x0},${y0}A${R},${R} 0 ${big} 1 ${x1},${y1}L${x2},${y2}A${r},${r} 0 ${big} 0 ${x3},${y3}Z`; };
+  el.innerHTML = `<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg width="180" height="180">${top.map((x,i) => {
+      const a0 = acc/tot*2*Math.PI; acc += x[1]; const a1 = Math.min(acc/tot*2*Math.PI, 2*Math.PI-1e-4);
+      return `<path d="${arc(a0,a1)}" fill="${pal[i%pal.length]}" stroke="#fff" stroke-width="2"><title>${x[0]} ${x[1]}%</title></path>`; }).join("")}
+      <text x="90" y="86" text-anchor="middle" font-size="12" fill="#5b6478">第一大</text><text x="90" y="106" text-anchor="middle" font-size="16" font-weight="800">${top[0][1].toFixed(1)}%</text></svg>
+    <div style="flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;font-size:13px">${top.map((x,i) => `<div style="display:flex;justify-content:space-between;gap:8px"><span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${pal[i%pal.length]};margin-right:6px"></i>${x[0]}</span><b class="num">${x[1].toFixed(2)}%</b></div>`).join("")}</div></div>`;
+}
+
+/* ================= 退休規劃 =================
+   1. 退休時需要多少本金 = 退休後每月想領 × 12 ÷ 退休組合殖利率(考慮通膨後的金額)
+   2. 照現在投入能累積多少 = 一次投入複利 + 每月定期定額複利(依建議比例的加權報酬)
+   3. 建議比例依「離退休還有幾年」:越久越偏市值型(讓本金長大)、越近越偏高股息+債券(穩定領息)  */
+const PLAN_KEYS = ["pAge","pRet","pLump","pMon","pWant","aG","aD","aB","aI"];
+try { const v = JSON.parse(localStorage.getItem("etf_plan") || "{}"); PLAN_KEYS.forEach(k => v[k] != null && ($("#"+k).value = v[k])); } catch(e){}
+PLAN_KEYS.forEach(k => $("#"+k).addEventListener("input", () => {
+  try { localStorage.setItem("etf_plan", JSON.stringify(Object.fromEntries(PLAN_KEYS.map(k => [k, $("#"+k).value])))); } catch(e){}
+  renderPlan();
+}));
+$("#planHd").onclick = () => { $("#plan").classList.toggle("closed"); $("#planTog").textContent = $("#plan").classList.contains("closed") ? "展開 ▼" : "收合 ▲"; };
+
+function glide(years){            // [市值, 高股息, 債券]
+  if (years >= 20) return [60, 30, 10];
+  if (years >= 10) return [45, 35, 20];
+  if (years >= 5)  return [30, 45, 25];
+  return [15, 50, 35];
+}
+const RET_MIX = [10, 55, 35];     // 退休後「領息期」的配置
+const BK = [{k:"市值型", c:"市值型", why:"長大本金"}, {k:"高股息", c:"高股息", why:"領現金流"}, {k:"債券", c:"債券", why:"穩住波動"}];
+
+function pickEtfs(){
+  // 依規模挑代表 ETF;高股息挑「發放月錯開」的季配,湊成月月有錢領
+  const ok = e => e.price > 0 && e.aum;
+  const byAum = (a,b) => (b.aum||0) - (a.aum||0);
+  const g = S.filter(e => ok(e) && e.category=="市值型" && e.region=="台股").sort(byAum).slice(0,1);
+  const groups = [[1,4,7,10],[2,5,8,11],[3,6,9,12]];
+  const hd = S.filter(e => ok(e) && e.category=="高股息" && e.region=="台股" && e.ttmYield > 0 && e.annYield <= 15).sort(byAum);
+  const d = [];
+  groups.forEach(gr => { const x = hd.find(e => !d.includes(e) && e.freq=="季配" && gr.some(m => e.payMonths.includes(m))); if (x) d.push(x); });
+  if (!d.length) d.push(...hd.slice(0,2));
+  const covered = new Set(d.flatMap(e => e.payMonths));
+  const bd = S.filter(e => ok(e) && e.category=="債券" && e.ttmYield > 0).sort(byAum);
+  const b = []; for (const e of bd) { if (b.length >= 2) break; if (!b.length || e.payMonths.some(m => !b[0].payMonths.includes(m))) b.push(e); }
+  return [g, d, b];
+}
+function catStats(c){             // 資料庫裡該類前5大的實際近一年殖利率 / 近一年漲幅
+  const l = S.filter(e => e.category==c && e.region=="台股" && e.aum).sort((a,b)=>b.aum-a.aum).slice(0,5);
+  const pick = c=="債券" ? S.filter(e => e.category=="債券" && e.aum).sort((a,b)=>b.aum-a.aum).slice(0,5) : l;
+  const avg = f => pick.length ? pick.reduce((s,e)=>s+(e[f]||0),0)/pick.length : 0;
+  return {yld: avg("ttmYield"), ret: avg("ret1y"), names: pick.map(e=>e.id).join("、")};
+}
+// 用「過去幾個完整年度的平均殖利率」比只看近一年保守,避免某一年特別高被高估
+function avgYld(e){
+  const thisY = String(new Date().getFullYear());
+  const ys = Object.entries(e.yearYields || {}).filter(([y]) => y < thisY).slice(-5).map(([,v]) => v.yld);
+  return ys.length ? ys.reduce((a,b)=>a+b,0)/ys.length : e.ttmYield;
+}
+const fv = (lump, mon, r, n) => { const i = r/12, m = n*12; return lump*Math.pow(1+i, m) + (i ? mon*(Math.pow(1+i, m)-1)/i : mon*m); };
+const wan = n => n >= 1e8 ? (n/1e8).toFixed(2) + " 億" : Math.round(n/1e4).toLocaleString() + " 萬";
+
+function renderPlan(){
+  if (!S) return;
+  const v = k => +$("#"+k).value || 0;
+  const age = v("pAge"), ret = v("pRet"), lump = v("pLump"), mon = v("pMon"), want = v("pWant");
+  const R = [v("aG"), v("aD"), v("aB")].map(x => x/100), infl = v("aI")/100;
+  const years = Math.max(0, ret - age), mix = glide(years);
+  const rAcc = mix.reduce((s,w,i) => s + w/100*R[i], 0);
+  const [G, D, B] = pickEtfs(), picks = [G, D, B];
+  // 退休組合殖利率:用實際挑出來 ETF 的近一年殖利率,按退休期配置加權
+  const yOf = l => l.length ? l.reduce((s,e)=>s+avgYld(e),0)/l.length/100 : 0;
+  const yRet = RET_MIX.reduce((s,w,i) => s + w/100*yOf(picks[i]), 0) || 0.05;
+  const wantFuture = want * Math.pow(1+infl, years);
+  const need = wantFuture * 12 / yRet;
+  const have = fv(lump, mon, rAcc, years);
+  const monthlyAtRet = have * yRet / 12;
+  const ratio = have / need;
+  // 要達標每月要投入多少 / 不加碼要幾歲才能退休
+  const i = rAcc/12, m = years*12;
+  const needMon = years ? Math.max(0, (need - lump*Math.pow(1+i,m)) * i / (Math.pow(1+i,m)-1)) : 0;
+  let okAge = null; for (let y = years; age + y <= 70; y++) { if (fv(lump, mon, rAcc, y) >= want*Math.pow(1+infl,y)*12/yRet) { okAge = age + y; break; } }
+
+  const tone = ratio >= 1 ? ["#16a34a","#22c55e","🎉","目標達成！"] : ratio >= .7 ? ["#f59e0b","#f97316","💪","差一點，再加把勁"] : ["#dc2626","#e52e71","⚠️","缺口偏大，要調整"];
+  const st = BK.map(b => catStats(b.c));
+  const colors = ["市值型","高股息","債券"].map(c => grad(c));
+
+  $("#pres").innerHTML = `
+    <div class="verdict" style="background:linear-gradient(135deg,${tone[0]},${tone[1]})">
+      <div class="em">${tone[2]}</div>
+      <div><h3>${tone[3]}　預估可達成 ${Math.round(ratio*100)}%</h3>
+      <p>照你現在的投入，${ret} 歲退休時每月約可領 <b>${money(monthlyAtRet)}</b>（換算今天的購買力約 ${money(monthlyAtRet/Math.pow(1+infl,years))}），目標是 ${money(want)}。</p></div>
+    </div>
+    <div class="bigs">
+      <div><small>離退休還有</small><b class="num">${years} 年</b><i>每月投入共 ${years*12} 次</i></div>
+      <div><small>退休時預估累積</small><b class="num">${wan(have)}</b><i>投入本金 ${wan(lump + mon*years*12)}</i></div>
+      <div><small>需要的本金</small><b class="num">${wan(need)}</b><i>以殖利率 ${(yRet*100).toFixed(1)}% 領息</i></div>
+      <div><small>${ratio>=1?"多出":"缺口"}</small><b class="num" style="color:${ratio>=1?"var(--down)":"var(--up)"}">${wan(Math.abs(have-need))}</b><i>${ratio>=1?"可以更保守或提早退休":"見下方調整建議"}</i></div>
+    </div>
+    <div>
+      <div class="lbl" style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px">建議投入比例（現在 → 退休後）</div>
+      <div class="alloc">${mix.map((w,i) => w ? `<div style="width:${w}%;background:${colors[i]}">${BK[i].k} ${w}%</div>` : "").join("")}</div>
+      <div class="lbl" style="margin-top:8px">退休後轉成：${RET_MIX.map((w,i)=>`${BK[i].k} ${w}%`).join("、")}　→ 以配息為主</div>
+    </div>
+    <div class="picks">${picks.map((l,bi) => l.map(e => {
+        const amt = lump * mix[bi]/100 / l.length, mAmt = mon * mix[bi]/100 / l.length;
+        return `<div class="pick" style="border-color:${col(e.category)}">
+          <div class="t"><b>${e.id} ${e.name}</b><span style="background:${grad(e.category)}">${BK[bi].k}</span></div>
+          <small>${e.freq} · 發放 ${e.payMonths.join("/")} 月 · 近年平均殖利率 ${avgYld(e).toFixed(1)}% · 規模 ${yi(e.aum)}</small>
+          <div style="font-size:13px">一次投入 <b class="num">${money(amt)}</b>（約 ${(amt/e.price/1000).toFixed(2)} 張）<br>每月扣款 <b class="num">${money(mAmt)}</b></div>
+        </div>`; }).join("")).join("")}</div>
+    <div class="why">
+      <b>💬 為什麼這樣配？白話說明</b>
+      <ul style="margin-top:6px">
+        <li><b>你離退休還有 ${years} 年</b>，${years>=20?"時間很長，最怕的不是波動而是本金長不大，所以把最大一塊放「市值型」，跟著台灣整體企業一起長大，中間跌了也有時間等它漲回來。":years>=10?"時間還算夠，市值型和高股息各佔一大塊：一邊讓本金繼續長大，一邊開始累積會配息的部位。":years>=5?"快到退休了，重點從「長大」慢慢轉成「穩定」，高股息變最大塊，債券也加多一點，避免退休前剛好遇到大跌。":"已經很接近退休，以穩定領息為主：高股息加債券佔八成以上，市值型留一點點對抗通膨。"}</li>
+        <li><b>市值型（${G.map(e=>e.id).join("、")||"—"}）</b>：負責「${BK[0].why}」。資料庫裡前幾大市值型近一年平均漲 ${st[0].ret.toFixed(1)}%，但它會大起大落，長期抓 ${v("aG")}% 比較保守。</li>
+        <li><b>高股息（${D.map(e=>e.id).join("、")||"—"}）</b>：負責「${BK[1].why}」。特別挑<b>發放月份錯開</b>的季配息，${new Set(D.flatMap(e=>e.payMonths)).size>=12?"三檔湊起來剛好 1～12 月每個月都有錢入帳":"讓入帳月份盡量分散"}。這幾檔過去幾年平均殖利率約 ${yOf(D)*100 ? (yOf(D)*100).toFixed(1) : "—"}%。</li>
+        <li><b>債券（${B.map(e=>e.id).join("、")||"—"}）</b>：負責「${BK[2].why}」。股市大跌時債券通常比較抗跌，像安全氣囊；退休後比重拉高，讓每月的錢比較穩。</li>
+        <li><b>需要多少本金怎麼算的？</b>你想每月領 ${money(want)}，加上每年 ${v("aI")}% 通膨，${years} 年後要 ${money(wantFuture)} 才買得到一樣的東西，一年就是 ${money(wantFuture*12)}；退休組合殖利率約 ${(yRet*100).toFixed(1)}%，所以本金要 ${money(wantFuture*12)} ÷ ${(yRet*100).toFixed(1)}% ≈ <b>${wan(need)}</b>，而且<b>只領息、不賣股</b>，本金不會越領越少。</li>
+        ${ratio < 1 ? `<li><b>怎麼補缺口？</b>三選一或混著用：①每月投入加到 <b>${money(needMon)}</b>；②${okAge ? `延到 <b>${okAge} 歲</b>退休` : "就算延到 70 歲退休也還不夠，建議搭配①或③"}；③把目標月領調到約 <b>${money(monthlyAtRet/Math.pow(1+infl,years))}</b>（今天的購買力）。</li>` : `<li><b>已經夠了怎麼辦？</b>可以把債券比重再加一點、降低波動；或照這個速度，你有機會比 ${ret} 歲更早退休。</li>`}
+      </ul>
+    </div>
+    <button class="apply" id="applyPlan">✨ 把「一次投入」套用到右邊的配息試算</button>
+    <div class="disc">※ 本試算用過去資料與你設定的假設推估，未來報酬與配息不保證，不構成投資建議；高殖利率可能含配發本金，投資前請看公開說明書。</div>`;
+  $("#applyPlan").onclick = () => {
+    PF = [];
+    picks.forEach((l,bi) => l.forEach(e => PF.push({id:e.id, lots: +(lump*mix[bi]/100/l.length/e.price/1000).toFixed(3), mode:"auto"})));
+    save(); renderPF(); document.querySelector("aside").scrollIntoView({behavior:"smooth"});
+  };
+}
+
+/* ---------- 一鍵更新 ----------
+   ① 馬上:透過自己的 Cloudflare 代理抓證交所即時報價,所有 ETF 現價/殖利率/試算立刻重算
+   ② 雲端:觸發 GitHub Actions 重抓全部資料(配息、持股、規模、新上市ETF),完成後網頁自動重新載入 */
+const CFG = {
+  proxy: "https://crm-proxy.yuan780903.workers.dev/?url=",
+  repo: "yuan780903-cpu/tw-etf-dividend",
+  workflow: "update.yml",
+  dispatch: "",          // 之後若在 Worker 加上觸發端點,填這裡就能真正一鍵(不用跳 GitHub)
+};
+async function liveQuotes(){
+  const ids = S.map(e => `${e.market == "上櫃" ? "otc" : "tse"}_${e.id}.tw`);
+  let n = 0, t = "";
+  for (let i = 0; i < ids.length; i += 50) {
+    const url = "https://mis.twse.com.tw/stock/api/getStockInfo.jsp?json=1&delay=0&ex_ch=" + ids.slice(i, i+50).join("|");
+    try {
+      const d = await fetch(CFG.proxy + encodeURIComponent(url)).then(r => r.json());
+      (d.msgArray || []).forEach(q => {
+        const e = S.find(x => x.id.toUpperCase() == String(q.c).toUpperCase()); if (!e) return;
+        const z = parseFloat(q.z), y = parseFloat(q.y), b = parseFloat((q.b || "").split("_")[0]);
+        const px = !isNaN(z) ? z : !isNaN(b) && b > 0 ? b : null;
+        if (!px || isNaN(y)) return;
+        e.price = px; e.chg = +(px - y).toFixed(3); e.chgPct = +((px / y - 1) * 100).toFixed(2);
+        e.date = `${q.d.slice(0,4)}-${q.d.slice(4,6)}-${q.d.slice(6,8)}`;
+        if (e.ttmCash) e.ttmYield = +(e.ttmCash / px * 100).toFixed(2);
+        if (e.lastDiv && e.perYear) e.annYield = +(e.lastDiv.cash * e.perYear / px * 100).toFixed(2);
+        n++; t = q.t || q["%"] || t;
+      });
+    } catch(err) { console.warn("即時報價失敗", err); }
+  }
+  return {n, t};
+}
+async function triggerCloud(){
+  if (CFG.dispatch) {
+    try { const r = await fetch(CFG.dispatch, {method:"POST"}); if (r.ok) return "started"; } catch(e) {}
+  }
+  window.open(`https://github.com/${CFG.repo}/actions/workflows/${CFG.workflow}`, "_blank");
+  return "manual";
+}
+function watchCloud(oldStamp){
+  let k = 0;
+  const iv = setInterval(async () => {
+    if (++k > 30) { clearInterval(iv); return; }          // 最多等 30 分鐘
+    try {
+      const d = await fetch("data/summary.json?" + Date.now()).then(r => r.json());
+      if (d.updated != oldStamp) { clearInterval(iv); toast(`☁️ 雲端資料更新完成（${d.updated}），重新載入中…`); setTimeout(() => location.reload(), 1500); }
+    } catch(e) {}
+  }, 60000);
+}
+function toast(msg, ms = 4000){
+  let el = $("#toast"); if (!el) { el = document.createElement("div"); el.id = "toast"; document.body.appendChild(el); }
+  el.innerHTML = msg; el.className = "show"; clearTimeout(el._t); el._t = setTimeout(() => el.className = "", ms);
+}
+let STAMP = "";
+$("#btnUp").onclick = async () => {
+  const b = $("#btnUp"); b.disabled = true; b.innerHTML = "⏳ 更新中…";
+  const {n, t} = await liveQuotes();
+  buildCats(); render(); renderPF(); renderPlan();
+  $("#upd").textContent = n ? `即時報價 ${t}` : $("#upd").textContent;
+  const how = await triggerCloud();
+  toast(`✅ 已更新 ${n} 檔即時報價${t ? "（" + t + "）" : ""}<br>${how == "started" ? "☁️ 雲端正在重抓全部資料，約 10～20 分鐘，完成會自動重新載入" : "☁️ 已開啟 GitHub 頁面，按綠色「Run workflow」就會重抓全部資料，完成後這頁會自動重新載入"}`, 9000);
+  watchCloud(STAMP);
+  b.disabled = false; b.innerHTML = "🔄 一鍵更新";
+};
+
+</script>
+</body>
+</html>
