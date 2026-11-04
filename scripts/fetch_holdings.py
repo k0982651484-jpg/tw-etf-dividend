@@ -67,6 +67,11 @@ def yahoo(sid, market):
         manager=loc(p.get("fundManagerName")), inception=p.get("inceptionDate"), style=p.get("category"),
         investRegion=loc(p.get("investRegion")), premium=(grab(h, "premiumDiscount") or {}).get("daily"))
 
+def fetched(path):
+    """上次抓取日期(讀檔內 fetched 欄位;雲端 git checkout 會把檔案修改時間全改成現在,不能用 mtime)"""
+    try: return json.load(open(path)).get("fetched") or ""
+    except Exception: return ""
+
 def main():
     master = json.load(open(os.path.join(DATA, "etf_master.json")))
     if "--only" in sys.argv:
@@ -74,13 +79,13 @@ def main():
     if "--oldest" in sys.argv:      # 每日輪流:只更新最久沒更新的 N 檔(+指定的新ETF)
         n = int(sys.argv[sys.argv.index("--oldest") + 1])
         extra = sys.argv[sys.argv.index("--ids") + 1].split(",") if "--ids" in sys.argv else []
-        mt = lambda e: os.path.getmtime(os.path.join(DATA, "holdings", e["id"] + ".json")) if os.path.exists(os.path.join(DATA, "holdings", e["id"] + ".json")) else 0
+        mt = lambda e: fetched(os.path.join(DATA, "holdings", e["id"] + ".json"))
         master = [e for e in master if e["id"] in extra] + sorted([e for e in master if e["id"] not in extra], key=mt)[:n]
     ap = os.path.join(DATA, "aum_history.json")
     aum_hist = json.load(open(ap)) if os.path.exists(ap) else {}
     for n, e in enumerate(master, 1):
         path = os.path.join(DATA, "holdings", e["id"] + ".json")
-        if os.path.exists(path) and dt.date.fromtimestamp(os.path.getmtime(path)) == TODAY:
+        if fetched(path) == TODAY.isoformat():
             continue
         try:
             full, fdate = moneydj(e["id"]); time.sleep(1)

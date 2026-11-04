@@ -33,17 +33,30 @@ def num(s):
     try: return float(str(s).replace(",", "").strip())
     except ValueError: return None
 
+def get_json(url, timeout, tries=3):
+    for i in range(tries):
+        try: return json.loads(urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout).read())
+        except Exception as e:
+            if i == tries - 1: raise
+            print(f"  重試 {i+1}: {e}")
+
+STAMP_P = os.path.join(DATA, "div_stamps.json")      # 配息上次更新日(不能用檔案 mtime,雲端 checkout 會重設)
+STAMPS = load(STAMP_P, {}) or {}
+
+def stamp(sid):
+    STAMPS[sid] = TODAY.isoformat(); fh.save(STAMP_P, STAMPS)
+
 def bulk_quotes():
     """上市+上櫃當日收盤(全市場一次抓)"""
     q = {}
     try:
-        tw = json.load(urllib.request.urlopen(urllib.request.Request("https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", headers=UA), timeout=90))
+        tw = get_json("https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", 90)
         for x in tw:
             c = num(x["ClosingPrice"])
             if c: q[x["Code"]] = [roc(x["Date"]), num(x["OpeningPrice"]), num(x["HighestPrice"]), num(x["LowestPrice"]), c, round((num(x["TradeVolume"]) or 0) / 1000)]
     except Exception as e: print("證交所當日行情失敗:", e)
     try:
-        tp = json.load(urllib.request.urlopen(urllib.request.Request("https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes", headers=UA), timeout=120))
+        tp = get_json("https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes", 180)
         for x in tp:
             c = num(x["Close"])
             if c: q[x["SecuritiesCompanyCode"]] = [roc(x["Date"]), num(x["Open"]), num(x["High"]), num(x["Low"]), c, round((num(x["TradingShares"]) or 0) / 1000)]
@@ -91,7 +104,7 @@ def main():
         if not spend(2): print("FinMind 本次預算用完,其餘下次再補"); break
         try:
             fh.save(os.path.join(DATA, "prices", sid + ".json"), fh.fetch_prices(sid))
-            fh.save(os.path.join(DATA, "dividends", sid + ".json"), fh.fetch_divs(sid))
+            fh.save(os.path.join(DATA, "dividends", sid + ".json"), fh.fetch_divs(sid)); stamp(sid)
         except fh.QuotaError: print("FinMind 額度用完,其餘下次再補"); used = BUDGET; break
 
     # 4. 配息:依急迫程度排序後,用剩下的額度更新
@@ -99,7 +112,7 @@ def main():
     upcoming = {u["id"] for u in load(os.path.join(DATA, "upcoming.json"), []) or []}
     def urgency(e):
         sid = e["id"]; s = summ.get(sid, {}); dp = os.path.join(DATA, "dividends", sid + ".json")
-        age = (TODAY - dt.date.fromtimestamp(os.path.getmtime(dp))).days if os.path.exists(dp) else 999
+        age = (TODAY - dt.date.fromisoformat(STAMPS[sid])).days if sid in STAMPS and os.path.exists(dp) else 999
         last_ex = (s.get("lastDiv") or {}).get("ex", "")
         recent = last_ex and (TODAY - dt.date.fromisoformat(last_ex)).days < 45          # 剛除息:等發放日/金額確認
         soon = TODAY.month in (s.get("exMonths") or []) or (TODAY.month % 12 + 1) in (s.get("exMonths") or [])
@@ -109,7 +122,7 @@ def main():
     for e in queue:
         if urgency(e)[1] == 0: continue        # 今天已更新
         if not spend(): break
-        try: fh.save(os.path.join(DATA, "dividends", e["id"] + ".json"), fh.fetch_divs(e["id"])); n += 1
+        try: fh.save(os.path.join(DATA, "dividends", e["id"] + ".json"), fh.fetch_divs(e["id"])); stamp(e["id"]); n += 1
         except fh.QuotaError: print("FinMind 額度用完"); break
     print("配息更新", n, "檔")
 
