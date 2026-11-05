@@ -21,6 +21,20 @@ body{background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC",syst
 /* ===== 頂部 ===== */
 header{background:linear-gradient(120deg,#0d1b4c 0%,#1f3cff 55%,#7b2ff7 100%);color:#fff;padding:28px 32px 90px;position:relative;overflow:hidden}
 header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%)}
+/* 頂部大型版權簽名(浮水印風) */
+.sig{flex:1;align-self:center;text-align:center;pointer-events:none;user-select:none;line-height:1;min-width:0}
+.sig .k{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 Inter,sans-serif;letter-spacing:.42em;color:rgba(255,255,255,.6);margin-bottom:8px}
+.sig .k:before,.sig .k:after{content:"";width:46px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6))}
+.sig .k:after{transform:scaleX(-1)}
+.sig .n{display:block;font-family:"Noto Sans TC",sans-serif;font-weight:900;font-size:clamp(72px,6.4vw,132px);letter-spacing:.08em;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1.6px rgba(255,255,255,.42);
+  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 45%,rgba(255,210,120,.6) 50%,transparent 62%) -150% 0/250% 100% no-repeat;
+  -webkit-background-clip:text;background-clip:text;animation:sigShine 6s ease-in-out infinite}
+.sig .n sup{font:800 .2em/1 Inter,sans-serif;-webkit-text-stroke:0;color:rgba(255,255,255,.55);vertical-align:top;margin-left:.15em;letter-spacing:0}
+@keyframes sigShine{0%,25%{background-position:-150% 0}75%,100%{background-position:250% 0}}
+@media(max-width:1399px){.sig{order:3;flex-basis:100%;text-align:right;margin:-6px 0 22px}.sig .n{font-size:clamp(60px,9vw,110px)}}
+@media(max-width:700px){.sig{order:2;text-align:left;margin:4px 0 2px}.sig .k{font-size:10px;letter-spacing:.3em}.sig .k:before{display:none}.sig .n{font-size:64px}.tix{order:3}}
+@media(prefers-reduced-motion:reduce){.sig .n{animation:none}}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
 .brand h1{font-size:30px;font-weight:900;letter-spacing:.5px}
 .brand p{opacity:.8;margin-top:6px;font-size:14px}
@@ -44,7 +58,13 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .cat:after{content:"";position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.15)}
 
 /* ===== 主區 ===== */
-.main{margin-top:26px}
+.main{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:22px;align-items:start}
+.main>aside{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto;display:flex;flex-direction:column;gap:16px;padding:2px 4px 4px;margin:-2px -4px 0;scrollbar-width:thin}
+.main>aside .hold{max-height:none}
+.main>aside .big .sum{font-size:32px}
+@media(max-width:1099px){.main{grid-template-columns:1fr}.main>aside{display:none}}
+.flash{animation:flash .7s ease}
+@keyframes flash{0%{transform:scale(1)}40%{transform:scale(1.03);box-shadow:0 0 0 4px rgba(255,61,119,.35),var(--shadow)}100%{transform:scale(1)}}
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 .bar input,.bar select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
 .bar input{flex:1;min-width:200px}
@@ -245,6 +265,7 @@ td.r,th.r{text-align:right}
       <h1>💰 ETF 月配息規劃</h1>
       <p>全台 ETF 一次看：分類、持股、配息月份、每月可以領多少</p>
     </div>
+    <div class="sig" aria-label="版權所有 莊政遠"><span class="k">© COPYRIGHT ・ 版權所有</span><span class="n">莊政遠<sup>©</sup></span></div>
     <div class="tix">
       <div class="tick"><small>加權指數</small><b class="num" id="tx">—</b><small id="txd"></small></div>
       <div class="tick"><small>收錄 ETF</small><b class="num" id="nEtf">—</b><small id="upd"></small></div>
@@ -309,13 +330,14 @@ td.r,th.r{text-align:right}
       </div>
       <div class="grid" id="grid"></div>
     </section>
+    <aside id="side"></aside>
   </div>
   </div>
 
   <div class="page" id="pg-calc">
     <div class="calc">
-     <div class="col">
-      <div class="box big">
+     <div class="col" id="colA">
+      <div class="box big" id="boxSum">
         <h2>未來 12 個月預估配息 <span style="font-size:12px;opacity:.85" id="rangeTxt"></span></h2>
         <div class="sum num" id="yearSum">$0</div>
         <div style="font-size:13px;opacity:.9">扣二代健保補充保費後 <b class="num" id="netSum">$0</b></div>
@@ -328,15 +350,15 @@ td.r,th.r{text-align:right}
           <select id="gMode"></select>
         </div>
       </div>
-      <div class="box">
+      <div class="box" id="boxHold">
         <h2>我的持股 <span style="font-size:12px;color:var(--sub);font-weight:500">張數可填小數=零股</span></h2>
         <div class="addrow"><input id="addId" list="etfList" placeholder="輸入代號或名稱新增，如 00919"><button id="addBtn">＋</button></div>
         <datalist id="etfList"></datalist>
         <div class="hold" id="hold"></div>
       </div>
      </div>
-     <div class="col">
-      <div class="box">
+     <div class="col" id="colB">
+      <div class="box" id="boxMon">
         <h2>每月領多少 <span style="font-size:12px;color:var(--sub);font-weight:500">依發放日・點月份看明細</span></h2>
         <div class="mbars" id="mbars"></div>
         <div id="mdetail"></div>
@@ -473,7 +495,8 @@ const MODES = () => {
 function addPF(id){
   const x = PF.find(p => p.id == id); x ? x.lots++ : PF.push({id, lots:1, mode:"auto"}); save(); renderPF();
   const e = S.find(v => v.id == id), lots = (x || PF[PF.length-1]).lots;
-  if (!document.getElementById("pg-calc").classList.contains("on")) toast(`✅ 已加入 ${id} ${e ? e.name : ""}（共 ${lots} 張）<br>到上方「💰 我的配息試算」看每月領多少`, 2600);
+  if ($("#side").contains($("#boxSum"))) { const b = $("#boxSum"); b.classList.remove("flash"); void b.offsetWidth; b.classList.add("flash"); }
+  else if (!$("#pg-calc").classList.contains("on")) toast(`✅ 已加入 ${id} ${e ? e.name : ""}（共 ${lots} 張）<br>到上方「💰 我的配息試算」看每月領多少`, 2600);
 }
 function modeOf(p){ return !p.mode || p.mode == "auto" ? gMode : p.mode; }
 function perPay(e, p){                         // 每股每次配多少
@@ -821,12 +844,21 @@ PLAN_KEYS.forEach(k => $("#"+k).addEventListener("input", () => {
   renderPlan();
 }));
 /* ---------- 分頁 ---------- */
+const WIDE = matchMedia("(min-width:1100px)");
+function placeCalc(){       // 總覽頁(寬螢幕)右側直接顯示試算;試算頁則展開成兩欄。同一組元件搬來搬去 -> 兩邊永遠同步
+  const side = WIDE.matches && $("#pg-etf").classList.contains("on");
+  const B = ["#boxSum", "#boxMon", "#boxHold"].map(q => $(q));
+  if (side) B.forEach(b => $("#side").appendChild(b));
+  else { $("#colA").append(B[0], B[2]); $("#colB").append(B[1]); }
+}
+WIDE.addEventListener("change", placeCalc);
 function go(tab, scroll = true){
   if (!document.getElementById("pg-" + tab)) tab = "etf";
   document.querySelectorAll(".page").forEach(p => p.classList.toggle("on", p.id == "pg-" + tab));
   document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab == tab));
   try{ localStorage.setItem("etf_tab", tab) }catch(e){}
   if (location.hash != "#" + tab) history.replaceState(null, "", "#" + tab);
+  placeCalc();
   if (scroll && scrollY > 200) window.scrollTo({top: 0, behavior: "smooth"});
 }
 $("#tabs").onclick = ev => { const t = ev.target.closest("[data-tab]"); if (t) go(t.dataset.tab); };
