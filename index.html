@@ -14,7 +14,29 @@
   --brand:#1f3cff; --brand2:#7b2ff7;
   --shadow:0 10px 30px -12px rgba(20,26,46,.25);
   --r:22px;
+  --track:#eef1f7; --muted:#a3abbd; --field:#ffffff; --hover:#f1f4fb; --soft:#f8fafc;
+  --glass:rgba(255,255,255,.92); --glass2:rgba(243,245,250,.94); --toast:#141a2e; --warnbg:#fff4e5;
+  --planhd:linear-gradient(90deg,#fff7ed,#fdf2f8,#eef2ff); --skhi:#f7f9fd; color-scheme:light;
+  --sel:#141a2e; --selink:#ffffff;
 }
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0f1a; --panel:#151a29; --ink:#e9edf7; --sub:#9aa4bb; --line:#262d42;
+  --track:#222a3d; --muted:#5f6982; --field:#1a2033; --hover:#1f2639; --soft:#1a2033;
+  --glass:rgba(21,26,41,.88); --glass2:rgba(11,15,26,.9); --toast:#2a3352; --warnbg:#3a2a12;
+  --planhd:linear-gradient(90deg,#2b1d12,#2a1326,#151c3a); --skhi:#2a3249;
+  --sel:linear-gradient(120deg,#3b5bff,#8b4dff); --selink:#ffffff;
+  --shadow:0 12px 30px -14px rgba(0,0,0,.7); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0b0f1a; --panel:#151a29; --ink:#e9edf7; --sub:#9aa4bb; --line:#262d42;
+  --track:#222a3d; --muted:#5f6982; --field:#1a2033; --hover:#1f2639; --soft:#1a2033;
+  --glass:rgba(21,26,41,.88); --glass2:rgba(11,15,26,.9); --toast:#2a3352; --warnbg:#3a2a12;
+  --planhd:linear-gradient(90deg,#2b1d12,#2a1326,#151c3a); --skhi:#2a3249;
+  --sel:linear-gradient(120deg,#3b5bff,#8b4dff); --selink:#ffffff;
+  --shadow:0 12px 30px -14px rgba(0,0,0,.7); color-scheme:dark;
+}
+input,select,textarea{color:var(--ink)}
+body{transition:background .3s,color .3s}
 *{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans TC",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .num{font-family:Inter,"Noto Sans TC",sans-serif;font-variant-numeric:tabular-nums}
@@ -46,6 +68,8 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .tick b{display:block;font-size:22px;margin-top:2px}
 .btn-up{background:#fff;color:#1f3cff;border:0;border-radius:14px;padding:14px 20px;font-weight:800;font-size:15px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);display:flex;gap:8px;align-items:center}
 .btn-up:hover{transform:translateY(-1px)}
+.btn-th{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:14px;width:52px;font-size:20px;cursor:pointer;backdrop-filter:blur(6px)}
+.btn-th:hover{background:rgba(255,255,255,.24)}
 
 /* ===== 分類大圖卡 ===== */
 .wrap{max-width:1500px;margin:-64px auto 0;padding:0 24px 60px;position:relative;z-index:2}
@@ -65,9 +89,9 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
   .cat{flex:0 0 auto;scroll-snap-align:start;padding:10px 14px}
 }
 /* ===== 卡片/清單切換 ===== */
-.vt{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
+.vt{display:inline-flex;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
 .vt button{border:0;background:none;border-radius:9px;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;color:var(--sub);cursor:pointer;white-space:nowrap}
-.vt button.on{background:var(--ink);color:#fff}
+.vt button.on{background:var(--sel);color:var(--selink)}
 .grid.list{display:flex;flex-direction:column;gap:8px}
 .lr{display:grid;grid-template-columns:6px minmax(0,1.7fr) 120px 96px 82px 82px 74px 44px;align-items:center;gap:14px;background:var(--panel);border-radius:16px;padding:10px 14px 10px 10px;
   box-shadow:0 6px 16px -12px rgba(20,26,46,.4);cursor:pointer;transition:transform .15s,box-shadow .15s}
@@ -98,7 +122,7 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
   .vt{margin-left:auto}
 }
 .more{display:flex;justify-content:center;padding:18px;color:var(--sub);font-size:13px}
-.more button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 22px;font:inherit;font-weight:700;cursor:pointer;color:var(--ink)}
+.more button{border:1px solid var(--line);background:var(--field);border-radius:12px;padding:10px 22px;font:inherit;font-weight:700;cursor:pointer;color:var(--ink)}
 
 /* ===== 主區 ===== */
 .main{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:22px;align-items:start}
@@ -109,11 +133,11 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .flash{animation:flash .7s ease}
 @keyframes flash{0%{transform:scale(1)}40%{transform:scale(1.03);box-shadow:0 0 0 4px rgba(255,61,119,.35),var(--shadow)}100%{transform:scale(1)}}
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
-.bar input,.bar select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
+.bar input,.bar select{border:1px solid var(--line);background:var(--field);border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
 .bar input{flex:1;min-width:200px}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;font-weight:500}
-.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip{border:1px solid var(--line);background:var(--field);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;font-weight:500}
+.chip.on{background:var(--sel);color:var(--selink);border-color:transparent}
 .count{color:var(--sub);font-size:13px;margin-left:auto}
 
 /* ===== ETF 大圖卡 ===== */
@@ -133,15 +157,15 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .kpi small{color:var(--sub);font-size:11px;display:block}
 .kpi b{font-size:16px}
 .months{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
-.months i{height:20px;border-radius:5px;background:#eef1f7;font-style:normal;font-size:10px;display:grid;place-items:center;color:#a3abbd;font-weight:700}
+.months i{height:20px;border-radius:5px;background:var(--track);font-style:normal;font-size:10px;display:grid;place-items:center;color:var(--muted);font-weight:700}
 .months i.pay{color:#fff}
 .lbl{font-size:11px;color:var(--sub);margin-bottom:4px}
-.warn{background:#fff4e5;color:#b25e00;font-size:12px;border-radius:10px;padding:6px 10px;font-weight:500}
+.warn{background:var(--warnbg);color:#b25e00;font-size:12px;border-radius:10px;padding:6px 10px;font-weight:500}
 .add{margin-top:auto;border:0;border-radius:12px;padding:10px;font-weight:800;cursor:pointer;color:#fff;font-size:14px}
 
 /* ===== 右側:我的配息月曆 ===== */
 /* ===== 分頁導覽 ===== */
-.tabs{position:sticky;top:10px;z-index:60;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:18px;box-shadow:var(--shadow);padding:6px;margin-bottom:22px;overflow-x:auto}
+.tabs{position:sticky;top:10px;z-index:60;display:flex;align-items:center;gap:6px;background:var(--glass);backdrop-filter:blur(10px);border-radius:18px;box-shadow:var(--shadow);padding:6px;margin-bottom:22px;overflow-x:auto}
 .tabs button{border:0;background:none;border-radius:14px;padding:14px 24px;font-family:inherit;font-size:17px;font-weight:800;line-height:1;letter-spacing:.02em;color:var(--sub);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
 .tabs button:hover{background:var(--bg);color:var(--ink)}
 .tabs button.on{background:linear-gradient(120deg,#1f3cff,#7b2ff7);color:#fff;box-shadow:0 8px 18px -8px rgba(31,60,255,.7)}
@@ -171,7 +195,7 @@ footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .big .row b{display:block;font-size:18px}
 .mbars{display:flex;flex-direction:column;gap:7px;margin-top:14px}
 .mb{display:grid;grid-template-columns:34px 1fr 78px;gap:8px;align-items:center;font-size:13px}
-.mb .tr{height:18px;background:#eef1f7;border-radius:6px;overflow:hidden;display:flex}
+.mb .tr{height:18px;background:var(--track);border-radius:6px;overflow:hidden;display:flex}
 .mb .tr span{height:100%}
 .mb b{text-align:right}
 .mb.now{font-weight:900}
@@ -179,7 +203,7 @@ footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .h{display:grid;grid-template-columns:8px 1fr auto auto;gap:10px;align-items:center;font-size:13px;padding:8px;border-radius:10px;background:var(--bg)}
 .h .dot{width:8px;height:32px;border-radius:4px}
 .h input{width:64px;border:1px solid var(--line);border-radius:8px;padding:5px;text-align:right;font-family:inherit}
-.h button{border:0;background:none;color:#a3abbd;cursor:pointer;font-size:16px}
+.h button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px}
 .empty{color:var(--sub);font-size:13px;text-align:center;padding:16px}
 
 /* ===== 詳情 ===== */
@@ -195,12 +219,12 @@ footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .dhd .px b{font-size:40px;font-weight:800;display:block}
 .dbd{padding:22px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
 .dp{display:none}.dp.on{display:grid;animation:pgIn .25s ease}
-.dtabs{position:sticky;top:0;z-index:5;display:flex;gap:6px;padding:10px 22px;background:rgba(243,245,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.dtabs{position:sticky;top:0;z-index:5;display:flex;gap:6px;padding:10px 22px;background:var(--glass2);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
 .dtabs::-webkit-scrollbar{display:none}
 .dtabs button{border:0;background:none;border-radius:12px;padding:11px 18px;font-family:inherit;font-size:16px;font-weight:800;color:var(--sub);cursor:pointer;white-space:nowrap}
-.dtabs button:hover{background:#fff;color:var(--ink)}
-.dtabs button.on{background:var(--ink);color:#fff}
-.dadd{margin-top:10px;border:0;border-radius:12px;padding:10px 16px;background:#fff;color:var(--ink);font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(0,0,0,.4)}
+.dtabs button:hover{background:var(--field);color:var(--ink)}
+.dtabs button.on{background:var(--sel);color:var(--selink)}
+.dadd{margin-top:10px;border:0;border-radius:12px;padding:10px 16px;background:#fff;color:#141a2e;font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(0,0,0,.4)}
 .dadd:hover{transform:translateY(-1px)}
 .grab{display:none}
 @media(max-width:700px){
@@ -237,18 +261,18 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th{color:var(--sub);font-weight:500;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
 td{padding:8px 6px;border-bottom:1px solid var(--line)}
 td.r,th.r{text-align:right}
-.wbar{height:8px;border-radius:4px;background:#eef1f7;overflow:hidden;min-width:60px}
+.wbar{height:8px;border-radius:4px;background:var(--track);overflow:hidden;min-width:60px}
 .wbar span{display:block;height:100%;border-radius:4px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--sub);margin-top:6px}
 .legend i{display:inline-block;width:14px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
 .seg{display:inline-flex;background:var(--bg);border-radius:10px;padding:3px;gap:2px}
 .seg button{border:0;background:none;padding:6px 10px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;color:var(--sub)}
-.seg button.on{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.seg button.on{background:var(--field);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .scroll{max-height:420px;overflow:auto}
-.tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12px;padding:7px 10px;border-radius:8px;z-index:99;display:none;white-space:nowrap}
+.tip{position:fixed;pointer-events:none;background:var(--sel);color:var(--selink);font-size:12px;padding:7px 10px;border-radius:8px;z-index:99;display:none;white-space:nowrap}
 /* ===== 退休規劃 ===== */
 .plan{background:var(--panel);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:22px}
-.plan-hd{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:linear-gradient(90deg,#fff7ed,#fdf2f8,#eef2ff);cursor:pointer}
+.plan-hd{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--planhd);cursor:pointer}
 .plan-hd h2{font-size:20px;font-weight:900}
 .plan-hd span{color:var(--sub);font-size:13px}
 .plan-bd{display:grid;grid-template-columns:320px 1fr;gap:0}
@@ -256,7 +280,7 @@ td.r,th.r{text-align:right}
 .plan.closed .plan-bd{display:none}
 .pform{padding:22px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
 .pf label{display:block;font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
-.pf .in{display:flex;align-items:center;border:2px solid var(--line);border-radius:14px;padding:0 12px;background:#fff}
+.pf .in{display:flex;align-items:center;border:2px solid var(--line);border-radius:14px;padding:0 12px;background:var(--field)}
 .pf .in:focus-within{border-color:#7b2ff7}
 .pf input{border:0;outline:0;flex:1;padding:12px 0;font-size:18px;font-weight:700;font-family:Inter,"Noto Sans TC";width:100%;background:none}
 .pf .in em{font-style:normal;color:var(--sub);font-size:13px}
@@ -284,7 +308,7 @@ td.r,th.r{text-align:right}
 .pick .t span{flex-shrink:0}
 .pick .t span{font-size:12px;color:#fff;border-radius:999px;padding:3px 9px;font-weight:700}
 .pick small{color:var(--sub);font-size:12px}
-.why{background:#f8fafc;border-left:5px solid #7b2ff7;border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.85}
+.why{background:var(--soft);border-left:5px solid #7b2ff7;border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.85}
 .why b{color:#7b2ff7}
 .why li{margin-left:18px}
 .apply{border:0;border-radius:14px;padding:14px;font-weight:900;font-size:15px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#ff7a18,#ff3d77,#7b2ff7)}
@@ -293,7 +317,7 @@ td.r,th.r{text-align:right}
 .gmode{margin-top:12px;font-size:13px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.18);border-radius:12px;padding:8px 10px}
 .gmode select{flex:1;border:0;border-radius:8px;padding:6px;font-family:inherit;font-weight:700}
 .mb{cursor:pointer;border-radius:8px;padding:2px 4px}
-.mb:hover,.mb.sel{background:#f1f4fb}
+.mb:hover,.mb.sel{background:var(--hover)}
 .mb .yr{font-size:10px;color:var(--sub);display:block;line-height:1}
 .mdt{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
 .mdt .it{display:grid;grid-template-columns:44px 1fr auto;gap:8px;font-size:12px;align-items:center;background:var(--bg);border-radius:10px;padding:7px 9px}
@@ -302,7 +326,7 @@ td.r,th.r{text-align:right}
 .b-ok{background:#dcfce7;color:#15803d}.b-est{background:#eef2ff;color:#4338ca}
 .addrow{display:flex;gap:6px;margin-top:10px}
 .addrow input{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-family:inherit}
-.addrow button{border:0;border-radius:10px;width:42px;background:var(--ink);color:#fff;font-size:18px;cursor:pointer}
+.addrow button{border:0;border-radius:10px;width:42px;background:var(--sel);color:var(--selink);font-size:18px;cursor:pointer}
 .h{grid-template-columns:8px 1fr!important;align-items:start!important}
 .h .top{display:flex;justify-content:space-between;gap:6px;align-items:center}
 .h .ctl{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;align-items:center}
@@ -320,7 +344,7 @@ td.r,th.r{text-align:right}
 .gauge small{color:var(--sub);font-size:12px}
 .dims{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .dim{display:grid;grid-template-columns:64px 1fr 34px;gap:8px;align-items:center;font-size:13px}
-.dim .tr{height:10px;background:#eef1f7;border-radius:5px;overflow:hidden}
+.dim .tr{height:10px;background:var(--track);border-radius:5px;overflow:hidden}
 .dim .tr span{display:block;height:100%;border-radius:5px}
 .talk{display:flex;flex-direction:column;gap:10px}
 .talk div{display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--bg);border-radius:14px;padding:11px 12px;font-size:14px;line-height:1.7}
@@ -358,10 +382,13 @@ td.r,th.r{text-align:right}
   .sig .n{font-size:46px}
   .tix{order:3;flex-basis:100%;flex-wrap:nowrap;gap:8px}
   .tick{flex:1;min-width:0;padding:8px 12px;border-radius:13px}
-  .tick small{font-size:10px}
+  .tick small{font-size:10px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tick{padding:8px 10px}
   .tick b{font-size:17px}
   .btn-up{padding:0;width:52px;flex:none;justify-content:center;font-size:20px;border-radius:13px}
   .btn-up .t{display:none}
+  .btn-th{width:40px;flex:none;border-radius:13px;font-size:17px}
+  .btn-up{width:46px}
   .wrap{margin-top:-40px;padding:0 12px 24px}
   .tabs{position:fixed;top:auto;left:0;right:0;bottom:0;margin:0;border-radius:22px 22px 0 0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));
     box-shadow:0 -8px 30px -12px rgba(20,26,46,.35);overflow:visible;gap:4px}
@@ -374,7 +401,24 @@ td.r,th.r{text-align:right}
   #toast{bottom:calc(150px + env(safe-area-inset-bottom))!important}
   footer{padding:20px 16px 12px}
 }
-#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:#141a2e;color:#fff;padding:14px 20px;border-radius:14px;font-size:14px;line-height:1.6;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:92vw}
+/* ===== 骨架載入 ===== */
+.sk{background:linear-gradient(90deg,var(--track) 25%,var(--skhi) 37%,var(--track) 63%);background-size:400% 100%;animation:sk 1.3s ease infinite;border-radius:12px}
+.sk-cat{height:60px;border-radius:18px}
+.sk-card{background:var(--panel);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+@keyframes sk{0%{background-position:100% 50%}100%{background-position:0 50%}}
+/* ===== 互動回饋 ===== */
+button,.chip,.cat,.lr,.card{-webkit-tap-highlight-color:transparent}
+.add,.ad,.chip,.vt button,.tabs button,.dtabs button,.btn-up,.btn-th,.dadd,.mbar,.more button,.seg button,.addrow button,.apply{transition:transform .15s ease,background .2s,color .2s,box-shadow .2s}
+.add:active,.ad:active,.chip:active,.vt button:active,.tabs button:active,.dtabs button:active,.btn-up:active,.btn-th:active,.dadd:active,.more button:active,.addrow button:active,.apply:active{transform:scale(.95)}
+.cat:active,.card:active,.lr:active{transform:scale(.985)}
+.mbar:active{transform:scale(.97)}
+.add:hover,.ad:hover{filter:brightness(1.08)}
+.done{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+:focus-visible{outline:3px solid #7b2ff7;outline-offset:2px}
+.dlg svg text:not([fill]):not([style]){fill:var(--ink)}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--toast);color:#fff;padding:14px 20px;border-radius:14px;font-size:14px;line-height:1.6;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:92vw}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
@@ -389,6 +433,7 @@ td.r,th.r{text-align:right}
     <div class="tix">
       <div class="tick"><small>加權指數</small><b class="num" id="tx">—</b><small id="txd"></small></div>
       <div class="tick"><small>收錄 ETF</small><b class="num" id="nEtf">—</b><small id="upd"></small></div>
+      <button class="btn-th" id="btnTh" title="切換深色/淺色" aria-label="切換深色或淺色模式">🌓</button>
       <button class="btn-up" id="btnUp" title="一鍵更新">🔄 <span class="t">一鍵更新</span></button>
     </div>
   </div>
@@ -428,7 +473,7 @@ td.r,th.r{text-align:right}
   </div>
 
   <div class="page" id="pg-etf">
-  <div class="cats" id="cats"></div>
+  <div class="cats" id="cats"><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div><div class="sk sk-cat"></div></div>
 
   <div class="main">
     <section>
@@ -449,7 +494,7 @@ td.r,th.r{text-align:right}
         <span class="count" id="count"></span>
         <div class="vt" id="vt"><button data-v="card">▦ 卡片</button><button data-v="list">☰ 清單</button></div>
       </div>
-      <div class="grid" id="grid"></div>
+      <div class="grid" id="grid"><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div><div class="sk-card"><div class="sk" style="height:74px;border-radius:0"></div><div style="padding:16px 18px;display:flex;flex-direction:column;gap:12px"><div class="sk" style="height:30px;width:55%"></div><div class="sk" style="height:42px"></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div><div class="sk" style="height:46px"></div></div><div class="sk" style="height:40px"></div></div></div></div>
     </section>
     <aside id="side"></aside>
   </div>
@@ -597,7 +642,7 @@ function cardHTML(e){
 }
 function rowHTML(e){
   const c = col(e.category), up = e.chg >= 0, sc = (e.ta || {}).score;
-  const tc = sc == null ? "#a3abbd" : sc >= 70 ? "#13a05f" : sc >= 50 ? "#d4a000" : sc >= 35 ? "#f07b14" : "#e5383b";
+  const tc = sc == null ? "#8a93a8" : sc >= 70 ? "#13a05f" : sc >= 50 ? "#d4a000" : sc >= 35 ? "#f07b14" : "#e5383b";
   return `<div class="lr" data-id="${e.id}">
       <span class="cb" style="background:${grad(e.category)}"></span>
       <div class="nm"><b>${e.id} ${e.name}</b><small>${e.category}・${e.region}・${e.freq}・規模 ${yi(e.aum)}</small></div>
@@ -620,6 +665,11 @@ function render(){                      // 篩選/排序改變 -> 重新從第�
   $("#grid").innerHTML = VIEW == "list" ? `<div class="lr hdr"><span></span><span>ETF</span><span>近 5 年走勢</span><span style="text-align:right">股價</span><span style="text-align:right">殖利率</span><span style="text-align:right">漲跌</span><span style="text-align:center">技術面</span><span></span></div>` : "";
   shown = 0; loadMore();
 }
+function added(btn){                  // 按下加入:按鈕變勾勾+彈跳
+  const html = btn.innerHTML; btn.classList.remove("done"); void btn.offsetWidth; btn.classList.add("done");
+  btn.innerHTML = btn.classList.contains("ad") ? "✓" : "✓ 已加入試算"; clearTimeout(btn._t); btn._t = setTimeout(() => { btn.innerHTML = btn._h || html; }, 1100);
+  btn._h = btn._h || html;
+}
 function loadMore(){                    // 分批載入:捲到底自動接下一批
   const old = $("#more"); if (old) old.remove();
   const next = L.slice(shown, shown + PAGE()); shown += next.length;
@@ -632,7 +682,7 @@ function loadMore(){                    // 分批載入:捲到底自動接下一
   moreObs.observe(m);
 }
 $("#grid").onclick = ev => {
-  const a = ev.target.closest("[data-add]"); if (a) { addPF(a.dataset.add); return; }
+  const a = ev.target.closest("[data-add]"); if (a) { addPF(a.dataset.add); added(a); return; }
   const it = ev.target.closest("[data-id]"); if (it) openDetail(it.dataset.id);
 };
 $("#vt").onclick = ev => { const b = ev.target.closest("[data-v]"); if (!b || b.dataset.v == VIEW) return; VIEW = b.dataset.v; try{ localStorage.setItem("etf_view", VIEW) }catch(e){} render(); };
@@ -705,10 +755,10 @@ async function renderPF(){
   const {months, keys, items} = schedule();
   const gross = items.reduce((s,x)=>s+x.amt,0), nhi = items.reduce((s,x)=>s+x.nhi,0);
   let cost = 0; PF.forEach(p => { const e = S.find(x => x.id == p.id); if (e) cost += e.price * p.lots * 1000; });
-  $("#yearSum").textContent = money(gross); $("#netSum").textContent = money(gross - nhi);
+  tweenMoney($("#yearSum"), gross); $("#netSum").textContent = money(gross - nhi);
   $("#tabN").textContent = PF.length; $("#tabN").style.display = PF.length ? "" : "none";
   document.body.classList.toggle("has-pf", PF.length > 0);
-  $("#mbN").textContent = PF.length; $("#mbSum").textContent = money(gross); $("#mbAvg").textContent = money(gross / 12);
+  $("#mbN").textContent = PF.length; tweenMoney($("#mbSum"), gross); $("#mbAvg").textContent = money(gross / 12);
   $("#tabMini").innerHTML = PF.length ? `未來 12 個月約領 <b class="num">${money(gross)}</b> ・ 平均每月 <b class="num">${money(gross/12)}</b>` : "";
   $("#avgM").textContent = money(gross/12); $("#cost").textContent = money(cost);
   $("#pYld").textContent = cost ? (gross/cost*100).toFixed(2) + "%" : "0%";
@@ -769,9 +819,9 @@ function gaugeSvg(score, color){
   const a = Math.PI * (1 - score/100), x = 110 + 85*Math.cos(a), y = 105 - 85*Math.sin(a);
   return `<svg viewBox="0 0 220 120" width="100%" style="max-width:220px">
     <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#dc2626"/><stop offset=".4" stop-color="#f59e0b"/><stop offset=".7" stop-color="#eab308"/><stop offset="1" stop-color="#16a34a"/></linearGradient></defs>
-    <path d="M25,105 A85,85 0 0 1 195,105" fill="none" stroke="#eef1f7" stroke-width="18" stroke-linecap="round"/>
+    <path d="M25,105 A85,85 0 0 1 195,105" fill="none" style="stroke:var(--track)" stroke-width="18" stroke-linecap="round"/>
     <path d="M25,105 A85,85 0 0 1 195,105" fill="none" stroke="url(#gg)" stroke-width="18" stroke-linecap="round" stroke-dasharray="${score/100*267} 400"/>
-    <circle cx="${x}" cy="${y}" r="9" fill="#fff" stroke="${color}" stroke-width="4"/>
+    <circle cx="${x}" cy="${y}" r="9" style="fill:var(--panel)" stroke="${color}" stroke-width="4"/>
     <text x="110" y="98" text-anchor="middle" font-size="34" font-weight="800" fill="${color}" font-family="Inter">${score}</text></svg>`;
 }
 function rankIn(e, key, desc = true){
@@ -862,13 +912,13 @@ async function dailyChart(el, e){
   const exs = dv.filter(x => x.ex >= d[0][0]).map(x => ({x, i: d.findIndex(r => r[0] >= x.ex)})).filter(o => o.i >= 0);
   const months = d.map((r,i) => [r[0].slice(0,7), i]).filter((v,i,a) => i == 0 || v[0] != a[i-1][0]).filter((_,k) => k % 2 == 0);
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%">
-    ${[0,.25,.5,.75,1].map(t => { const v = mn + t*(mx-mn); return `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e4e8f1"/><text x="${P.l-6}" y="${Y(v)+4}" font-size="11" text-anchor="end" fill="#5b6478">${fmt(v,1)}</text>`; }).join("")}
-    ${months.map(([m,i]) => `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" fill="#5b6478">${m.slice(2).replace("-","/")}</text>`).join("")}
+    ${[0,.25,.5,.75,1].map(t => { const v = mn + t*(mx-mn); return `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:var(--line)"/><text x="${P.l-6}" y="${Y(v)+4}" font-size="11" text-anchor="end" style="fill:var(--sub)">${fmt(v,1)}</text>`; }).join("")}
+    ${months.map(([m,i]) => `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" style="fill:var(--sub)">${m.slice(2).replace("-","/")}</text>`).join("")}
     ${exs.map(o => `<line x1="${X(o.i)}" x2="${X(o.i)}" y1="${P.t}" y2="${H-P.b}" stroke="#06b6d4" stroke-dasharray="3 3" opacity=".6"/><text x="${X(o.i)}" y="${P.t+12}" font-size="13" text-anchor="middle"><title>${o.x.ex} 除息 ${o.x.cash} 元</title>💧</text>`).join("")}
     <path d="${path(s60)}" fill="none" stroke="#7c3aed" stroke-width="1.6"/>
     <path d="${path(s20)}" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
     <path d="${path(cc)}" fill="none" stroke="${col(e.category)}" stroke-width="2.4"/>
-    <line id="dv" y1="${P.t}" y2="${H-P.b}" stroke="#141a2e" opacity="0"/><rect x="${P.l}" y="0" width="${W-P.l-P.r}" height="${H}" fill="transparent" id="dhit"/></svg>`;
+    <line id="dv" y1="${P.t}" y2="${H-P.b}" style="stroke:var(--ink)" opacity="0"/><rect x="${P.l}" y="0" width="${W-P.l-P.r}" height="${H}" fill="transparent" id="dhit"/></svg>`;
   const svg = el.querySelector("svg"), tip = $("#tip"), ln = el.querySelector("#dv");
   el.querySelector("#dhit").onmousemove = ev => {
     const r = svg.getBoundingClientRect(), i = Math.max(0, Math.min(N-1, Math.round(((ev.clientX-r.left)/r.width*W - P.l)/(W-P.l-P.r)*(N-1))));
@@ -882,6 +932,11 @@ async function dailyChart(el, e){
 /* ---------- 單檔詳情 ---------- */
 async function openDetail(id){
   const e = S.find(x => x.id == id), c = col(e.category);
+  if (!$("#ov").classList.contains("on")) {   // 先開面板+骨架,資料到了再填(手機上感覺更快)
+    $("#dlg").innerHTML = `<div class="dhd" style="background:${grad(e.category)}"><i class="grab"></i><div><div style="opacity:.85;font-weight:700">${e.id}</div><h2>${e.name}</h2></div></div>
+      <div class="dbd" style="display:grid"><div class="box"><div class="sk" style="height:90px"></div></div><div class="box"><div class="sk" style="height:260px"></div></div></div>`;
+    $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  }
   const [h, dv] = await Promise.all([
     fetch(`data/holdings/${id}.json`).then(r => r.ok ? r.json() : {}).catch(() => ({})),
     loadDV(id),
@@ -992,12 +1047,12 @@ function lineChart(el, e, mode){
   const ticks = [0, .25, .5, .75, 1].map(t => amn + t*(amx-amn));
   const c = col(e.category);
   el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="overflow:visible">
-    ${ticks.map(v => `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v,amn,amx)}" y2="${Y(v,amn,amx)}" stroke="#e4e8f1"/><text x="${P.l-8}" y="${Y(v,amn,amx)+4}" font-size="11" text-anchor="end" fill="#5b6478">${mode=="pct"?v.toFixed(0)+"%":fmt(v,1)}</text>`).join("")}
+    ${ticks.map(v => `<line x1="${P.l}" x2="${W-P.r}" y1="${Y(v,amn,amx)}" y2="${Y(v,amn,amx)}" style="stroke:var(--line)"/><text x="${P.l-8}" y="${Y(v,amn,amx)+4}" font-size="11" text-anchor="end" style="fill:var(--sub)">${mode=="pct"?v.toFixed(0)+"%":fmt(v,1)}</text>`).join("")}
     ${mode=="px" ? [0,.5,1].map(t => { const v = bmn+t*(bmx-bmn); return `<text x="${W-P.r+8}" y="${Y(v,bmn,bmx)+4}" font-size="11" fill="#94a3b8">${fmt(v)}</text>`; }).join("") : ""}
-    ${m.filter((x,i) => i % 12 == 0).map(x => { const i = m.indexOf(x); return `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" fill="#5b6478">${x[0].slice(0,4)}</text>`; }).join("")}
+    ${m.filter((x,i) => i % 12 == 0).map(x => { const i = m.indexOf(x); return `<text x="${X(i)}" y="${H-6}" font-size="11" text-anchor="middle" style="fill:var(--sub)">${x[0].slice(0,4)}</text>`; }).join("")}
     <path d="${path(sb,bmn,bmx)}" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
     <path d="${path(sa,amn,amx)}" fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round"/>
-    <line id="hv" y1="${P.t}" y2="${H-P.b}" stroke="#141a2e" stroke-width="1" opacity="0"/>
+    <line id="hv" y1="${P.t}" y2="${H-P.b}" style="stroke:var(--ink)" stroke-width="1" opacity="0"/>
     <rect x="${P.l}" y="0" width="${W-P.l-P.r}" height="${H}" fill="transparent" id="hit"/>
   </svg>`;
   const svg = el.querySelector("svg"), tip = $("#tip"), hv = el.querySelector("#hv");
@@ -1024,8 +1079,8 @@ function donut(el, data, cat){
     return `M${x0},${y0}A${R},${R} 0 ${big} 1 ${x1},${y1}L${x2},${y2}A${r},${r} 0 ${big} 0 ${x3},${y3}Z`; };
   el.innerHTML = `<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><svg width="180" height="180">${top.map((x,i) => {
       const a0 = acc/tot*2*Math.PI; acc += x[1]; const a1 = Math.min(acc/tot*2*Math.PI, 2*Math.PI-1e-4);
-      return `<path d="${arc(a0,a1)}" fill="${pal[i%pal.length]}" stroke="#fff" stroke-width="2"><title>${x[0]} ${x[1]}%</title></path>`; }).join("")}
-      <text x="90" y="86" text-anchor="middle" font-size="12" fill="#5b6478">第一大</text><text x="90" y="106" text-anchor="middle" font-size="16" font-weight="800">${top[0][1].toFixed(1)}%</text></svg>
+      return `<path d="${arc(a0,a1)}" fill="${pal[i%pal.length]}" style="stroke:var(--panel)" stroke-width="2"><title>${x[0]} ${x[1]}%</title></path>`; }).join("")}
+      <text x="90" y="86" text-anchor="middle" font-size="12" style="fill:var(--sub)">第一大</text><text x="90" y="106" text-anchor="middle" font-size="16" font-weight="800">${top[0][1].toFixed(1)}%</text></svg>
     <div style="flex:1;min-width:150px;display:flex;flex-direction:column;gap:6px;font-size:13px">${top.map((x,i) => `<div style="display:flex;justify-content:space-between;gap:8px"><span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${pal[i%pal.length]};margin-right:6px"></i>${x[0]}</span><b class="num">${x[1].toFixed(2)}%</b></div>`).join("")}</div></div>`;
 }
 
@@ -1059,6 +1114,23 @@ function go(tab, scroll = true){
   if (scroll && scrollY > 200) window.scrollTo({top: 0, behavior: "smooth"});
 }
 $("#mbar").onclick = () => go("calc");
+/* 深淺色:自動(跟系統) → 深色 → 淺色 */
+const TH = ["auto","dark","light"], TH_ICON = {auto:"🌓", dark:"🌙", light:"☀️"};
+function setTheme(t){
+  if (t == "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme", t);
+  $("#btnTh").textContent = TH_ICON[t]; $("#btnTh").title = {auto:"跟隨系統", dark:"深色模式", light:"淺色模式"}[t] + "（點擊切換）";
+  try{ localStorage.setItem("etf_theme", t) }catch(e){}
+}
+setTheme((() => { try{ return localStorage.getItem("etf_theme") }catch(e){} })() || "auto");
+$("#btnTh").onclick = () => { const cur = (() => { try{ return localStorage.getItem("etf_theme") }catch(e){} })() || "auto"; const nx = TH[(TH.indexOf(cur)+1)%3]; setTheme(nx);
+  toast({auto:"🌓 跟隨系統深淺色", dark:"🌙 已切換深色模式", light:"☀️ 已切換淺色模式"}[nx], 1600); };
+/* 數字滾動動畫 */
+function tweenMoney(el, to){
+  const from = el._v ?? to; el._v = to; if (from == to || matchMedia("(prefers-reduced-motion:reduce)").matches) { el.textContent = money(to); return; }
+  const t0 = performance.now(), D = 600; cancelAnimationFrame(el._r);
+  const step = t => { const k = Math.min(1, (t - t0) / D), e = 1 - Math.pow(1 - k, 3); el.textContent = money(from + (to - from) * e); if (k < 1) el._r = requestAnimationFrame(step); };
+  el._r = requestAnimationFrame(step);
+}
 $("#tabs").onclick = ev => { const t = ev.target.closest("[data-tab]"); if (t) go(t.dataset.tab); };
 window.addEventListener("hashchange", () => go(location.hash.slice(1), false));
 go(location.hash.slice(1) || (()=>{ try{ return localStorage.getItem("etf_tab") }catch(e){} })() || "etf", false);
