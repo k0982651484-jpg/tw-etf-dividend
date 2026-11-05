@@ -2,7 +2,8 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1a2fd8">
 <title>ETF 月配息規劃</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
@@ -102,6 +103,7 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .tabs button{border:0;background:none;border-radius:13px;padding:12px 20px;font:800 15px/1 inherit;font-family:inherit;color:var(--sub);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
 .tabs button:hover{background:var(--bg);color:var(--ink)}
 .tabs button.on{background:linear-gradient(120deg,#1f3cff,#7b2ff7);color:#fff;box-shadow:0 8px 18px -8px rgba(31,60,255,.7)}
+.tabs .ic{font-style:normal}
 .tabs .n{background:#ff3d77;color:#fff;border-radius:999px;font-size:11px;padding:3px 7px;min-width:20px;text-align:center}
 .tabs button.on .n{background:#fff;color:#7b2ff7}
 .tabs .mini{margin-left:auto;font-size:13px;color:var(--sub);padding:0 12px;white-space:nowrap;cursor:pointer}
@@ -254,6 +256,48 @@ td.r,th.r{text-align:right}
 .rank small{color:var(--sub);font-size:12px}
 .rank b{display:block;font-size:20px}
 .rank i{font-style:normal;font-size:12px;color:var(--sub)}
+/* ===== 浮動配息小結(側欄放不下的螢幕) ===== */
+.mbar{display:none;position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:55;border:0;border-radius:18px;padding:11px 16px;
+  background:linear-gradient(120deg,#ff7a18,#ff3d77 55%,#7b2ff7);color:#fff;font-family:inherit;text-align:left;cursor:pointer;
+  box-shadow:0 14px 30px -10px rgba(123,47,247,.65);align-items:center;gap:14px;transition:transform .25s,opacity .25s}
+.mbar small{display:block;font-size:11px;opacity:.9}
+.mbar b{font-size:19px;font-weight:800}
+.mbar .mb-l{flex:1}
+.mbar .mb-r{text-align:right}
+.mbar i{font-style:normal;font-size:26px;opacity:.85;margin-left:-4px}
+.mbar.flash{animation:flash .7s ease}
+@media(max-width:1099px){body.has-pf:not(.on-calc) .mbar{display:flex}body.has-pf:not(.on-calc){padding-bottom:84px}}
+@media(min-width:701px) and (max-width:1099px){.mbar{max-width:560px;left:50%;right:auto;width:calc(100% - 24px);transform:translateX(-50%)}}
+
+/* ===== 手機:精簡頂部 + 底部分頁列(像 App) ===== */
+@media(max-width:700px){
+  header{padding:calc(16px + env(safe-area-inset-top)) 16px 58px}
+  header:after{width:300px;height:300px;right:-90px;top:-110px}
+  .top{gap:10px 12px;align-items:center}
+  .brand{flex:1;min-width:0}
+  .brand h1{font-size:22px;white-space:nowrap}
+  .brand p{font-size:12px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sig{order:2;flex-basis:100%;margin:2px 0 0}
+  .sig .k{font-size:9px;margin-bottom:4px}
+  .sig .n{font-size:46px;-webkit-text-stroke-width:1.2px}
+  .tix{order:3;flex-basis:100%;flex-wrap:nowrap;gap:8px}
+  .tick{flex:1;min-width:0;padding:8px 12px;border-radius:13px}
+  .tick small{font-size:10px}
+  .tick b{font-size:17px}
+  .btn-up{padding:0;width:52px;flex:none;justify-content:center;font-size:20px;border-radius:13px}
+  .btn-up .t{display:none}
+  .wrap{margin-top:-40px;padding:0 12px 24px}
+  .tabs{position:fixed;top:auto;left:0;right:0;bottom:0;margin:0;border-radius:22px 22px 0 0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+    box-shadow:0 -8px 30px -12px rgba(20,26,46,.35);overflow:visible;gap:4px}
+  .tabs button{flex:1;flex-direction:column;gap:3px;padding:8px 4px 7px;font-size:11px;border-radius:14px;position:relative}
+  .tabs .ic{font-size:21px;line-height:1}
+  .tabs .n{position:absolute;top:3px;left:calc(50% + 6px);font-size:10px;padding:2px 6px;min-width:18px}
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  body.has-pf:not(.on-calc){padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+  .mbar{bottom:calc(74px + env(safe-area-inset-bottom))}
+  #toast{bottom:calc(150px + env(safe-area-inset-bottom))!important}
+  footer{padding:20px 16px 12px}
+}
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:#141a2e;color:#fff;padding:14px 20px;border-radius:14px;font-size:14px;line-height:1.6;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:200;max-width:92vw}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
@@ -269,16 +313,16 @@ td.r,th.r{text-align:right}
     <div class="tix">
       <div class="tick"><small>加權指數</small><b class="num" id="tx">—</b><small id="txd"></small></div>
       <div class="tick"><small>收錄 ETF</small><b class="num" id="nEtf">—</b><small id="upd"></small></div>
-      <button class="btn-up" id="btnUp">🔄 一鍵更新</button>
+      <button class="btn-up" id="btnUp" title="一鍵更新">🔄 <span class="t">一鍵更新</span></button>
     </div>
   </div>
 </header>
 
 <div class="wrap">
   <nav class="tabs" id="tabs">
-    <button data-tab="etf">📊 <span class="lg">ETF 總覽</span><span class="sm">總覽</span></button>
-    <button data-tab="calc">💰 <span class="lg">我的配息試算</span><span class="sm">配息試算</span> <span class="n" id="tabN">0</span></button>
-    <button data-tab="plan">🎯 <span class="lg">退休規劃</span><span class="sm">退休</span></button>
+    <button data-tab="etf"><i class="ic">📊</i><span class="lg">ETF 總覽</span><span class="sm">總覽</span></button>
+    <button data-tab="calc"><i class="ic">💰</i><span class="lg">我的配息試算</span><span class="sm">配息試算</span> <span class="n" id="tabN">0</span></button>
+    <button data-tab="plan"><i class="ic">🎯</i><span class="lg">退休規劃</span><span class="sm">退休</span></button>
     <span class="mini" id="tabMini" data-tab="calc"></span>
   </nav>
 
@@ -372,6 +416,11 @@ td.r,th.r{text-align:right}
   <div><div class="cp">© <span id="cpY">2026</span> 莊政遠 版權所有</div>未經授權請勿轉載、重製或作商業使用。</div>
   <div style="max-width:640px">資料來源：臺灣證券交易所、證券櫃檯買賣中心、FinMind、Yahoo 股市、MoneyDJ。本站內容僅供參考，不構成任何投資建議；配息為依歷史資料估算，實際以各投信公告為準。</div>
 </footer>
+
+<button class="mbar" id="mbar" data-tab="calc" aria-label="打開我的配息試算">
+  <span class="mb-l"><small>已選 <b id="mbN">0</b> 檔・未來 12 個月</small><b class="num" id="mbSum">$0</b></span>
+  <span class="mb-r"><small>平均每月</small><b class="num" id="mbAvg">$0</b></span><i>›</i>
+</button>
 
 <div class="ov" id="ov"><div class="dlg" id="dlg"></div></div>
 <div class="tip" id="tip"></div>
@@ -496,6 +545,7 @@ function addPF(id){
   const x = PF.find(p => p.id == id); x ? x.lots++ : PF.push({id, lots:1, mode:"auto"}); save(); renderPF();
   const e = S.find(v => v.id == id), lots = (x || PF[PF.length-1]).lots;
   if ($("#side").contains($("#boxSum"))) { const b = $("#boxSum"); b.classList.remove("flash"); void b.offsetWidth; b.classList.add("flash"); }
+  else if (getComputedStyle($("#mbar")).display != "none") { const b = $("#mbar"); b.classList.remove("flash"); void b.offsetWidth; b.classList.add("flash"); }
   else if (!$("#pg-calc").classList.contains("on")) toast(`✅ 已加入 ${id} ${e ? e.name : ""}（共 ${lots} 張）<br>到上方「💰 我的配息試算」看每月領多少`, 2600);
 }
 function modeOf(p){ return !p.mode || p.mode == "auto" ? gMode : p.mode; }
@@ -549,6 +599,8 @@ async function renderPF(){
   let cost = 0; PF.forEach(p => { const e = S.find(x => x.id == p.id); if (e) cost += e.price * p.lots * 1000; });
   $("#yearSum").textContent = money(gross); $("#netSum").textContent = money(gross - nhi);
   $("#tabN").textContent = PF.length; $("#tabN").style.display = PF.length ? "" : "none";
+  document.body.classList.toggle("has-pf", PF.length > 0);
+  $("#mbN").textContent = PF.length; $("#mbSum").textContent = money(gross); $("#mbAvg").textContent = money(gross / 12);
   $("#tabMini").innerHTML = PF.length ? `未來 12 個月約領 <b class="num">${money(gross)}</b> ・ 平均每月 <b class="num">${money(gross/12)}</b>` : "";
   $("#avgM").textContent = money(gross/12); $("#cost").textContent = money(cost);
   $("#pYld").textContent = cost ? (gross/cost*100).toFixed(2) + "%" : "0%";
@@ -859,8 +911,10 @@ function go(tab, scroll = true){
   try{ localStorage.setItem("etf_tab", tab) }catch(e){}
   if (location.hash != "#" + tab) history.replaceState(null, "", "#" + tab);
   placeCalc();
+  document.body.classList.toggle("on-calc", tab == "calc");
   if (scroll && scrollY > 200) window.scrollTo({top: 0, behavior: "smooth"});
 }
+$("#mbar").onclick = () => go("calc");
 $("#tabs").onclick = ev => { const t = ev.target.closest("[data-tab]"); if (t) go(t.dataset.tab); };
 window.addEventListener("hashchange", () => go(location.hash.slice(1), false));
 go(location.hash.slice(1) || (()=>{ try{ return localStorage.getItem("etf_tab") }catch(e){} })() || "etf", false);
@@ -1028,14 +1082,14 @@ function toast(msg, ms = 4000){
 }
 let STAMP = "";
 $("#btnUp").onclick = async () => {
-  const b = $("#btnUp"); b.disabled = true; b.innerHTML = "⏳ 更新中…";
+  const b = $("#btnUp"); b.disabled = true; b.innerHTML = "⏳ <span class=\"t\">更新中…</span>";
   const {n, t} = await liveQuotes();
   buildCats(); render(); renderPF(); renderPlan();
   $("#upd").textContent = n ? `即時報價 ${t}` : $("#upd").textContent;
   const how = await triggerCloud();
   toast(`✅ 已更新 ${n} 檔即時報價${t ? "（" + t + "）" : ""}<br>${how == "started" ? "☁️ 雲端正在重抓全部資料，約 10～20 分鐘，完成會自動重新載入" : "☁️ 已開啟 GitHub 頁面，按綠色「Run workflow」就會重抓全部資料，完成後這頁會自動重新載入"}`, 9000);
   watchCloud(STAMP);
-  b.disabled = false; b.innerHTML = "🔄 一鍵更新";
+  b.disabled = false; b.innerHTML = "🔄 <span class=\"t\">一鍵更新</span>";
 };
 
 </script>
