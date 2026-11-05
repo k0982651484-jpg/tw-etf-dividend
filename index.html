@@ -100,17 +100,18 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 /* ===== 右側:我的配息月曆 ===== */
 /* ===== 分頁導覽 ===== */
 .tabs{position:sticky;top:10px;z-index:60;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:18px;box-shadow:var(--shadow);padding:6px;margin-bottom:22px;overflow-x:auto}
-.tabs button{border:0;background:none;border-radius:13px;padding:12px 20px;font:800 15px/1 inherit;font-family:inherit;color:var(--sub);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.tabs button{border:0;background:none;border-radius:14px;padding:14px 24px;font-family:inherit;font-size:17px;font-weight:800;line-height:1;letter-spacing:.02em;color:var(--sub);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
 .tabs button:hover{background:var(--bg);color:var(--ink)}
 .tabs button.on{background:linear-gradient(120deg,#1f3cff,#7b2ff7);color:#fff;box-shadow:0 8px 18px -8px rgba(31,60,255,.7)}
-.tabs .ic{font-style:normal}
+.tabs .ic{font-style:normal;font-size:20px;line-height:1}
 .tabs .n{background:#ff3d77;color:#fff;border-radius:999px;font-size:11px;padding:3px 7px;min-width:20px;text-align:center}
 .tabs button.on .n{background:#fff;color:#7b2ff7}
-.tabs .mini{margin-left:auto;font-size:13px;color:var(--sub);padding:0 12px;white-space:nowrap;cursor:pointer}
-.tabs .mini b{color:var(--ink);font-size:15px}
+.tabs .mini{margin-left:auto;font-size:14px;color:var(--sub);padding:0 12px;white-space:nowrap;cursor:pointer}
+.tabs .mini b{color:var(--ink);font-size:17px}
 .page{display:none}.page.on{display:block;animation:pgIn .25s ease}
 @keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .tabs .sm{display:none}
+@media(max-width:1099px){.tabs .mini{display:none}}
 @media(max-width:700px){.tabs .mini{display:none}.tabs button{flex:1;justify-content:center;padding:11px 6px;font-size:14px;gap:5px}.tabs .lg{display:none}.tabs .sm{display:inline}}
 /* ===== 配息試算頁 ===== */
 .calc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:22px;align-items:start}
