@@ -28,11 +28,12 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .sig .k:before,.sig .k:after{content:"";width:46px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6))}
 .sig .k:after{transform:scaleX(-1)}
 .sig .n{display:block;font-family:"Noto Sans TC",sans-serif;font-weight:900;font-size:clamp(72px,6.4vw,132px);letter-spacing:.08em;white-space:nowrap;
-  color:transparent;-webkit-text-stroke:1.6px rgba(255,255,255,.42);
-  background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 45%,rgba(255,210,120,.6) 50%,transparent 62%) -150% 0/250% 100% no-repeat;
-  -webkit-background-clip:text;background-clip:text;animation:sigShine 6s ease-in-out infinite}
-.sig .n sup{font:800 .2em/1 Inter,sans-serif;-webkit-text-stroke:0;color:rgba(255,255,255,.55);vertical-align:top;margin-left:.15em;letter-spacing:0}
-@keyframes sigShine{0%,25%{background-position:-150% 0}75%,100%{background-position:250% 0}}
+  color:transparent;background:linear-gradient(100deg,#ffffff 0%,#ffe6b0 18%,#ffffff 36%,#d7c8ff 54%,#ffffff 72%,#ffe6b0 90%,#ffffff 100%) 0 0/220% 100%;
+  -webkit-background-clip:text;background-clip:text;animation:sigFlow 7s linear infinite,sigGlow 3.2s ease-in-out infinite}
+@keyframes sigFlow{to{background-position:-220% 0}}
+@keyframes sigGlow{0%,100%{filter:drop-shadow(0 0 4px rgba(255,255,255,.35)) drop-shadow(0 0 16px rgba(150,110,255,.45))}
+  50%{filter:drop-shadow(0 0 10px rgba(255,255,255,.75)) drop-shadow(0 0 34px rgba(255,190,90,.6))}}
+.sig .n sup{font:800 .2em/1 Inter,sans-serif;color:rgba(255,255,255,.75);-webkit-text-fill-color:rgba(255,255,255,.75);vertical-align:top;margin-left:.15em;letter-spacing:0}
 @media(max-width:1399px){.sig{order:3;flex-basis:100%;text-align:right;margin:-6px 0 22px}.sig .n{font-size:clamp(60px,9vw,110px)}}
 @media(max-width:700px){.sig{order:2;text-align:left;margin:4px 0 2px}.sig .k{font-size:10px;letter-spacing:.3em}.sig .k:before{display:none}.sig .n{font-size:64px}.tix{order:3}}
 @media(prefers-reduced-motion:reduce){.sig .n{animation:none}}
@@ -182,9 +183,9 @@ footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .empty{color:var(--sub);font-size:13px;text-align:center;padding:16px}
 
 /* ===== 詳情 ===== */
-.ov{position:fixed;inset:0;background:rgba(10,14,30,.55);backdrop-filter:blur(3px);display:none;z-index:50;overflow:auto;padding:30px 16px}
+.ov{position:fixed;inset:0;background:rgba(10,14,30,.55);backdrop-filter:blur(3px);display:none;z-index:70;overflow:auto;padding:30px 16px}
 .ov.on{display:block}
-.dlg{max-width:1100px;margin:0 auto;background:var(--bg);border-radius:28px;overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.dlg{max-width:1100px;margin:0 auto;background:var(--bg);border-radius:28px;overflow:hidden;overflow:clip;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
 .dhd{padding:26px 30px;color:#fff;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative}
 .dhd h2{font-size:28px;font-weight:900}
 .dhd .x{position:absolute;right:18px;top:14px;background:rgba(255,255,255,.25);border:0;color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer}
@@ -193,6 +194,39 @@ footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .dhd .px{text-align:right;padding-right:40px}
 .dhd .px b{font-size:40px;font-weight:800;display:block}
 .dbd{padding:22px;display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.dp{display:none}.dp.on{display:grid;animation:pgIn .25s ease}
+.dtabs{position:sticky;top:0;z-index:5;display:flex;gap:6px;padding:10px 22px;background:rgba(243,245,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.dtabs::-webkit-scrollbar{display:none}
+.dtabs button{border:0;background:none;border-radius:12px;padding:11px 18px;font-family:inherit;font-size:16px;font-weight:800;color:var(--sub);cursor:pointer;white-space:nowrap}
+.dtabs button:hover{background:#fff;color:var(--ink)}
+.dtabs button.on{background:var(--ink);color:#fff}
+.dadd{margin-top:10px;border:0;border-radius:12px;padding:10px 16px;background:#fff;color:var(--ink);font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 8px 18px -8px rgba(0,0,0,.4)}
+.dadd:hover{transform:translateY(-1px)}
+.grab{display:none}
+@media(max-width:700px){
+  .ov{padding:0;overflow:hidden}
+  .dlg{position:fixed;left:0;right:0;bottom:0;max-height:94vh;max-height:94dvh;overflow-y:auto;overscroll-behavior:contain;border-radius:24px 24px 0 0;
+    padding-bottom:env(safe-area-inset-bottom);animation:sheetUp .32s cubic-bezier(.2,.8,.2,1);transition:transform .26s ease}
+  .ov.out{background:rgba(10,14,30,0);transition:background .26s}
+  .ov.out .dlg{transform:translateY(100%)!important}
+  .grab{display:block;position:absolute;left:50%;top:8px;width:42px;height:5px;margin-left:-21px;border-radius:3px;background:rgba(255,255,255,.6)}
+  .dhd{padding:24px 18px 16px;gap:10px}
+  .dhd h2{font-size:22px;padding-right:40px}
+  .dhd .x{top:16px;right:14px;width:34px;height:34px;font-size:17px}
+  .dhd .tags{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-18px;padding-right:18px}
+  .dhd .tags span{white-space:nowrap}
+  .dbd .box h2{flex-wrap:wrap;gap:8px}
+  .dhd>div:first-of-type{min-width:0;width:100%}
+  .dhd .px{text-align:left;padding-right:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;width:100%}
+  .dhd .px b{font-size:30px}
+  .dhd .px small{width:100%}
+  .dadd{margin:4px 0 0 auto}
+  .dtabs{padding:8px 10px;gap:4px}
+  .dtabs button{flex:1;padding:10px 6px;font-size:14px}
+  .dbd{padding:12px;gap:12px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:none}}
 .dbd .box{grid-column:span 12}
 @media(min-width:900px){.s7{grid-column:span 7!important}.s5{grid-column:span 5!important}.s4{grid-column:span 4!important}.s8{grid-column:span 8!important}.s6{grid-column:span 6!important}}
 .stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
@@ -321,7 +355,7 @@ td.r,th.r{text-align:right}
   .brand p{font-size:12px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .sig{order:2;flex-basis:100%;margin:2px 0 0}
   .sig .k{font-size:9px;margin-bottom:4px}
-  .sig .n{font-size:46px;-webkit-text-stroke-width:1.2px}
+  .sig .n{font-size:46px}
   .tix{order:3;flex-basis:100%;flex-wrap:nowrap;gap:8px}
   .tick{flex:1;min-width:0;padding:8px 12px;border-radius:13px}
   .tick small{font-size:10px}
@@ -859,49 +893,85 @@ async function openDetail(id){
   const mxw = Math.max(1, ...hold.map(x => x[2] || 0));
   $("#dlg").innerHTML = `
   <div class="dhd" style="background:${grad(e.category)}">
-    <button class="x" onclick="closeDetail()">✕</button>
+    <i class="grab"></i>
+    <button class="x" onclick="closeDetail()" aria-label="關閉">✕</button>
     <div><div style="opacity:.85;font-weight:700">${e.id} · ${e.market}</div><h2>${e.name}</h2>
       <div class="tags"><span>${CAT[e.category].ic} ${e.category}</span><span>${e.region}</span><span>${e.freq}</span>${h.style?`<span>${h.style}</span>`:""}${h.issuer?`<span>${h.issuer}</span>`:""}</div></div>
-    <div class="px"><small>${e.date} 收盤</small><b class="num">${fmt(e.price,2)}</b><span class="num" style="font-weight:700">${up?"▲":"▼"} ${fmt(Math.abs(e.chg),2)} (${fmt(e.chgPct,2)}%)</span></div>
+    <div class="px"><small>${e.date} 收盤</small><b class="num">${fmt(e.price,2)}</b><span class="num" style="font-weight:700">${up?"▲":"▼"} ${fmt(Math.abs(e.chg),2)} (${fmt(e.chgPct,2)}%)</span>
+      <button class="dadd" onclick="addPF('${e.id}')">＋ 加入我的試算</button></div>
   </div>
-  <div class="dbd">
+  <div class="dtabs" id="dtabs">
+    <button class="on" data-p="trend">📈 <span>走勢</span></button>
+    <button data-p="hold">🧩 <span>持股</span></button>
+    <button data-p="div">💵 <span>配息</span></button>
+    ${e.ta ? `<button data-p="ta">🧠 <span>技術分析</span></button>` : ""}
+  </div>
+  <div class="dbd dp on" data-p="trend">
     <div class="box"><div class="stats">
       ${stat("規模", yi(h.aum||e.aum), 0)}${stat("近一年殖利率", e.ttmYield? e.ttmYield+"%":"—", 1)}${stat("年化殖利率", e.annYield? e.annYield+"%":"—", 0)}
       ${stat("近一年配息", e.ttmCash? fmt(e.ttmCash,3)+" 元":"—", 1)}${stat("經理費", h.fee||"—", 0)}${stat("近一年漲跌", fmt(e.ret1y,1)+"%", 1)}
     </div>${h.benchmark?`<div style="font-size:13px;color:var(--sub);margin-top:10px">追蹤指數：${h.benchmark}　｜　成立日：${h.inception||"—"}${h.manager?"　｜　經理人："+h.manager:""}</div>`:""}</div>
-
-    ${taBox(e)}
-    <div class="box s8"><h2>近 60 個月走勢 vs 大盤 <span class="seg" id="mode"><button class="on" data-m="pct">累積漲跌%</button><button data-m="px">股價</button></span></h2>
+    <div class="box"><h2>近 60 個月走勢 vs 大盤 <span class="seg" id="mode"><button class="on" data-m="pct">累積漲跌%</button><button data-m="px">股價</button></span></h2>
       <div id="chart" style="margin-top:10px"></div>
       <div class="legend"><span><i style="background:${c}"></i>${e.name}</span><span><i style="background:#94a3b8"></i>加權指數</span></div></div>
-
-    <div class="box s4"><h2>配息時間表</h2>
+  </div>
+  <div class="dbd dp" data-p="hold">
+    <div class="box s7"><h2>持股明細 <span style="font-size:12px;color:var(--sub);font-weight:500">${hold.length} 檔 · ${h.fullDate||h.top10Date||""}</span></h2>
+      <div class="scroll" style="margin-top:8px">${hold.length ? `<table><tr><th>#</th><th>名稱</th><th class="r">持股(千股)</th><th>比重</th><th class="r">%</th></tr>
+      ${hold.map((x,i) => `<tr><td>${i+1}</td><td>${x[0]}</td><td class="r num">${x[1]!=null?fmt(x[1]):"—"}</td><td><div class="wbar"><span style="width:${(x[2]||0)/mxw*100}%;background:${grad(e.category)}"></span></div></td><td class="r num"><b>${fmt(x[2],2)}</b></td></tr>`).join("")}</table>`
+      : `<div class="empty">這檔沒有個股持股（期貨/槓桿/反向或 REITs）</div>`}</div></div>
+    <div class="box s5"><h2>${e.region=="海外"?"地區 / 產業":"產業"}比重</h2><div id="donut" style="margin-top:8px"></div></div>
+  </div>
+  <div class="dbd dp" data-p="div">
+    <div class="box s5"><h2>配息時間表</h2>
       <div style="margin-top:10px"><div class="lbl">除息月份</div>${monthsRow(e.exMonths, G[1])}</div>
       <div style="margin-top:10px"><div class="lbl">發放月份（錢入帳）</div>${monthsRow(e.payMonths, c)}</div>
       <div class="lbl" style="margin-top:14px">歷年殖利率（配息合計 ÷ 當年均價）</div>
       <table><tr><th>年度</th><th class="r">配息</th><th class="r">均價</th><th class="r">殖利率</th></tr>
       ${yy.map(([y,v]) => `<tr><td>${y}</td><td class="r num">${fmt(v.cash,3)}</td><td class="r num">${fmt(v.avgPx,2)}</td><td class="r num"><b>${v.yld}%</b></td></tr>`).join("") || `<tr><td colspan=4 class="empty">尚無配息紀錄</td></tr>`}</table></div>
-
-    <div class="box s7"><h2>持股明細 <span style="font-size:12px;color:var(--sub);font-weight:500">${hold.length} 檔 · ${h.fullDate||h.top10Date||""}</span></h2>
-      <div class="scroll" style="margin-top:8px">${hold.length ? `<table><tr><th>#</th><th>名稱</th><th class="r">持股(千股)</th><th>比重</th><th class="r">%</th></tr>
-      ${hold.map((x,i) => `<tr><td>${i+1}</td><td>${x[0]}</td><td class="r num">${x[1]!=null?fmt(x[1]):"—"}</td><td><div class="wbar"><span style="width:${(x[2]||0)/mxw*100}%;background:${grad(e.category)}"></span></div></td><td class="r num"><b>${fmt(x[2],2)}</b></td></tr>`).join("")}</table>`
-      : `<div class="empty">這檔沒有個股持股（期貨/槓桿/反向或 REITs）</div>`}</div></div>
-
-    <div class="box s5"><h2>${e.region=="海外"?"地區 / 產業":"產業"}比重</h2><div id="donut" style="margin-top:8px"></div></div>
-
-    <div class="box"><h2>配息紀錄</h2><div class="scroll" style="margin-top:8px"><table>
+    <div class="box s7"><h2>配息紀錄</h2><div class="scroll" style="margin-top:8px"><table>
       <tr><th>除息日</th><th>發放日</th><th class="r">每股配息</th><th class="r">每張可領</th></tr>
       ${dv.slice().reverse().slice(0,24).map(d => `<tr><td>${d.ex}</td><td>${d.pay||"—"}</td><td class="r num">${fmt(d.cash,3)}</td><td class="r num"><b>${money(d.cash*1000)}</b></td></tr>`).join("") || `<tr><td colspan=4 class="empty">尚無配息</td></tr>`}
     </table></div></div>
+  </div>
+  <div class="dbd dp" data-p="ta">
+    ${taBox(e)}
+  </div>
   </div>`;
   $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  $("#dlg").scrollTop = 0; $("#ov").scrollTop = 0;
+  $("#dtabs").onclick = ev => {
+    const b = ev.target.closest("[data-p]"); if (!b) return;
+    $("#dtabs").querySelectorAll("button").forEach(x => x.classList.toggle("on", x == b));
+    $("#dlg").querySelectorAll(".dp").forEach(x => x.classList.toggle("on", x.dataset.p == b.dataset.p));
+    const top = $("#dtabs").offsetTop; if ($("#dlg").scrollTop > top) $("#dlg").scrollTop = top; if ($("#ov").scrollTop > top + 30) $("#ov").scrollTop = top + 30;
+  };
   const draw = m => lineChart($("#chart"), e, m);
   draw("pct");
   $("#mode").querySelectorAll("button").forEach(b => b.onclick = () => { $("#mode").querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on"); draw(b.dataset.m); });
   donut($("#donut"), (h.industry||[]).filter(x => x[1] > 0), e.category);
   if (e.ta) dailyChart($("#daily"), e);
 }
-function closeDetail(){ $("#ov").classList.remove("on"); document.body.style.overflow = ""; }
+function closeDetail(){
+  const ov = $("#ov"); if (!ov.classList.contains("on")) return;
+  if (SHEET.matches) { ov.classList.add("out"); setTimeout(() => { ov.classList.remove("on", "out"); $("#dlg").style.transform = ""; }, 260); }
+  else ov.classList.remove("on");
+  document.body.style.overflow = "";
+}
+/* 手機:底部面板,從頂端往下滑可關閉 */
+const SHEET = matchMedia("(max-width:700px)");
+(() => {
+  const d = $("#dlg"); let y0 = null, dy = 0;
+  d.addEventListener("touchstart", ev => { y0 = SHEET.matches && d.scrollTop <= 0 ? ev.touches[0].clientY : null; dy = 0; d.style.transition = "none"; }, {passive: true});
+  d.addEventListener("touchmove", ev => {
+    if (y0 == null) return; dy = ev.touches[0].clientY - y0;
+    if (dy > 0) { d.style.transform = `translateY(${dy}px)`; if (ev.cancelable) ev.preventDefault(); } else { y0 = null; d.style.transform = ""; }
+  }, {passive: false});
+  d.addEventListener("touchend", () => {
+    d.style.transition = ""; if (y0 == null) return; y0 = null;
+    if (dy > 110) closeDetail(); else d.style.transform = "";
+  });
+})();
 $("#ov").onclick = ev => { if (ev.target.id == "ov") closeDetail(); };
 document.addEventListener("keydown", ev => ev.key == "Escape" && closeDetail());
 
