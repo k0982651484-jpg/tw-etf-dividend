@@ -44,8 +44,7 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .cat:after{content:"";position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.15)}
 
 /* ===== 主區 ===== */
-.main{display:grid;grid-template-columns:1fr 380px;gap:22px;margin-top:26px}
-@media(max-width:1100px){.main{grid-template-columns:1fr}}
+.main{margin-top:26px}
 .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 .bar input,.bar select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-size:14px;font-family:inherit}
 .bar input{flex:1;min-width:200px}
@@ -78,7 +77,27 @@ header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;he
 .add{margin-top:auto;border:0;border-radius:12px;padding:10px;font-weight:800;cursor:pointer;color:#fff;font-size:14px}
 
 /* ===== 右側:我的配息月曆 ===== */
-aside{position:sticky;top:16px;align-self:start;display:flex;flex-direction:column;gap:16px}
+/* ===== 分頁導覽 ===== */
+.tabs{position:sticky;top:10px;z-index:60;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:18px;box-shadow:var(--shadow);padding:6px;margin-bottom:22px;overflow-x:auto}
+.tabs button{border:0;background:none;border-radius:13px;padding:12px 20px;font:800 15px/1 inherit;font-family:inherit;color:var(--sub);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.tabs button:hover{background:var(--bg);color:var(--ink)}
+.tabs button.on{background:linear-gradient(120deg,#1f3cff,#7b2ff7);color:#fff;box-shadow:0 8px 18px -8px rgba(31,60,255,.7)}
+.tabs .n{background:#ff3d77;color:#fff;border-radius:999px;font-size:11px;padding:3px 7px;min-width:20px;text-align:center}
+.tabs button.on .n{background:#fff;color:#7b2ff7}
+.tabs .mini{margin-left:auto;font-size:13px;color:var(--sub);padding:0 12px;white-space:nowrap;cursor:pointer}
+.tabs .mini b{color:var(--ink);font-size:15px}
+.page{display:none}.page.on{display:block;animation:pgIn .25s ease}
+@keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tabs .sm{display:none}
+@media(max-width:700px){.tabs .mini{display:none}.tabs button{flex:1;justify-content:center;padding:11px 6px;font-size:14px;gap:5px}.tabs .lg{display:none}.tabs .sm{display:inline}}
+/* ===== 配息試算頁 ===== */
+.calc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:22px;align-items:start}
+.calc .col{display:flex;flex-direction:column;gap:22px}
+@media(max-width:900px){.calc{grid-template-columns:1fr}}
+.calc .hold{max-height:none}
+/* ===== 頁尾 ===== */
+footer{max-width:1500px;margin:0 auto;padding:26px 24px 40px;border-top:1px solid var(--line);color:var(--sub);font-size:13px;line-height:1.8;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer .cp{color:var(--ink);font-weight:800;font-size:14px}
 .box{background:var(--panel);border-radius:var(--r);box-shadow:var(--shadow);padding:20px}
 .box h2{font-size:18px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
 .big{background:linear-gradient(135deg,#ff7a18,#ff3d77 55%,#7b2ff7);color:#fff}
@@ -235,8 +254,16 @@ td.r,th.r{text-align:right}
 </header>
 
 <div class="wrap">
+  <nav class="tabs" id="tabs">
+    <button data-tab="etf">📊 <span class="lg">ETF 總覽</span><span class="sm">總覽</span></button>
+    <button data-tab="calc">💰 <span class="lg">我的配息試算</span><span class="sm">配息試算</span> <span class="n" id="tabN">0</span></button>
+    <button data-tab="plan">🎯 <span class="lg">退休規劃</span><span class="sm">退休</span></button>
+    <span class="mini" id="tabMini" data-tab="calc"></span>
+  </nav>
+
+  <div class="page" id="pg-plan">
   <div class="plan" id="plan">
-    <div class="plan-hd" id="planHd"><h2>🎯 我的退休規劃</h2><span id="planTog">收合 ▲</span></div>
+    <div class="plan-hd" id="planHd"><h2>🎯 我的退休規劃</h2><span style="color:var(--sub);font-size:13px">填基本資料 → 自動建議投入比例</span></div>
     <div class="plan-bd">
       <div class="pform">
         <div class="pf"><label>現在年齡</label><div class="in"><input type="number" id="pAge" value="35"><em>歲</em></div></div>
@@ -257,6 +284,9 @@ td.r,th.r{text-align:right}
       <div class="pres" id="pres"></div>
     </div>
   </div>
+  </div>
+
+  <div class="page" id="pg-etf">
   <div class="cats" id="cats"></div>
 
   <div class="main">
@@ -279,8 +309,12 @@ td.r,th.r{text-align:right}
       </div>
       <div class="grid" id="grid"></div>
     </section>
+  </div>
+  </div>
 
-    <aside>
+  <div class="page" id="pg-calc">
+    <div class="calc">
+     <div class="col">
       <div class="box big">
         <h2>未來 12 個月預估配息 <span style="font-size:12px;opacity:.85" id="rangeTxt"></span></h2>
         <div class="sum num" id="yearSum">$0</div>
@@ -295,19 +329,27 @@ td.r,th.r{text-align:right}
         </div>
       </div>
       <div class="box">
-        <h2>每月領多少 <span style="font-size:12px;color:var(--sub);font-weight:500">依發放日・點月份看明細</span></h2>
-        <div class="mbars" id="mbars"></div>
-        <div id="mdetail"></div>
-      </div>
-      <div class="box">
         <h2>我的持股 <span style="font-size:12px;color:var(--sub);font-weight:500">張數可填小數=零股</span></h2>
         <div class="addrow"><input id="addId" list="etfList" placeholder="輸入代號或名稱新增，如 00919"><button id="addBtn">＋</button></div>
         <datalist id="etfList"></datalist>
         <div class="hold" id="hold"></div>
       </div>
-    </aside>
+     </div>
+     <div class="col">
+      <div class="box">
+        <h2>每月領多少 <span style="font-size:12px;color:var(--sub);font-weight:500">依發放日・點月份看明細</span></h2>
+        <div class="mbars" id="mbars"></div>
+        <div id="mdetail"></div>
+      </div>
+     </div>
+    </div>
   </div>
 </div>
+
+<footer>
+  <div><div class="cp">© <span id="cpY">2026</span> 莊政遠 版權所有</div>未經授權請勿轉載、重製或作商業使用。</div>
+  <div style="max-width:640px">資料來源：臺灣證券交易所、證券櫃檯買賣中心、FinMind、Yahoo 股市、MoneyDJ。本站內容僅供參考，不構成任何投資建議；配息為依歷史資料估算，實際以各投信公告為準。</div>
+</footer>
 
 <div class="ov" id="ov"><div class="dlg" id="dlg"></div></div>
 <div class="tip" id="tip"></div>
@@ -428,7 +470,11 @@ const MODES = () => {
   for (let i = 1; i <= 5; i++) ys.push(["y" + (y - i), `${y - i} 年殖利率`]);
   return [["last","最近一次配息"],["ttm","近一年配息"],["avg","近年平均殖利率"], ...ys, ["custom","自行輸入殖利率"]];
 };
-function addPF(id){ const x = PF.find(p => p.id == id); x ? x.lots++ : PF.push({id, lots:1, mode:"auto"}); save(); renderPF(); }
+function addPF(id){
+  const x = PF.find(p => p.id == id); x ? x.lots++ : PF.push({id, lots:1, mode:"auto"}); save(); renderPF();
+  const e = S.find(v => v.id == id), lots = (x || PF[PF.length-1]).lots;
+  if (!document.getElementById("pg-calc").classList.contains("on")) toast(`✅ 已加入 ${id} ${e ? e.name : ""}（共 ${lots} 張）<br>到上方「💰 我的配息試算」看每月領多少`, 2600);
+}
 function modeOf(p){ return !p.mode || p.mode == "auto" ? gMode : p.mode; }
 function perPay(e, p){                         // 每股每次配多少
   if (!e || !e.perYear) return 0;
@@ -479,6 +525,8 @@ async function renderPF(){
   const gross = items.reduce((s,x)=>s+x.amt,0), nhi = items.reduce((s,x)=>s+x.nhi,0);
   let cost = 0; PF.forEach(p => { const e = S.find(x => x.id == p.id); if (e) cost += e.price * p.lots * 1000; });
   $("#yearSum").textContent = money(gross); $("#netSum").textContent = money(gross - nhi);
+  $("#tabN").textContent = PF.length; $("#tabN").style.display = PF.length ? "" : "none";
+  $("#tabMini").innerHTML = PF.length ? `未來 12 個月約領 <b class="num">${money(gross)}</b> ・ 平均每月 <b class="num">${money(gross/12)}</b>` : "";
   $("#avgM").textContent = money(gross/12); $("#cost").textContent = money(cost);
   $("#pYld").textContent = cost ? (gross/cost*100).toFixed(2) + "%" : "0%";
   $("#rangeTxt").textContent = `${months[0].getFullYear()}/${months[0].getMonth()+1}～${months[11].getFullYear()}/${months[11].getMonth()+1}`;
@@ -772,7 +820,19 @@ PLAN_KEYS.forEach(k => $("#"+k).addEventListener("input", () => {
   try { localStorage.setItem("etf_plan", JSON.stringify(Object.fromEntries(PLAN_KEYS.map(k => [k, $("#"+k).value])))); } catch(e){}
   renderPlan();
 }));
-$("#planHd").onclick = () => { $("#plan").classList.toggle("closed"); $("#planTog").textContent = $("#plan").classList.contains("closed") ? "展開 ▼" : "收合 ▲"; };
+/* ---------- 分頁 ---------- */
+function go(tab, scroll = true){
+  if (!document.getElementById("pg-" + tab)) tab = "etf";
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("on", p.id == "pg-" + tab));
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab == tab));
+  try{ localStorage.setItem("etf_tab", tab) }catch(e){}
+  if (location.hash != "#" + tab) history.replaceState(null, "", "#" + tab);
+  if (scroll && scrollY > 200) window.scrollTo({top: 0, behavior: "smooth"});
+}
+$("#tabs").onclick = ev => { const t = ev.target.closest("[data-tab]"); if (t) go(t.dataset.tab); };
+window.addEventListener("hashchange", () => go(location.hash.slice(1), false));
+go(location.hash.slice(1) || (()=>{ try{ return localStorage.getItem("etf_tab") }catch(e){} })() || "etf", false);
+$("#cpY").textContent = Math.max(2026, new Date().getFullYear()) > 2026 ? "2026–" + new Date().getFullYear() : "2026";
 
 function glide(years){            // [市值, 高股息, 債券]
   if (years >= 20) return [60, 30, 10];
@@ -878,7 +938,7 @@ function renderPlan(){
   $("#applyPlan").onclick = () => {
     PF = [];
     picks.forEach((l,bi) => l.forEach(e => PF.push({id:e.id, lots: +(lump*mix[bi]/100/l.length/e.price/1000).toFixed(3), mode:"auto"})));
-    save(); renderPF(); document.querySelector("aside").scrollIntoView({behavior:"smooth"});
+    save(); renderPF(); go("calc");
   };
 }
 
